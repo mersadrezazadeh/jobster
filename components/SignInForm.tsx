@@ -1,7 +1,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { Loader2 } from "lucide-react";
 import * as z from "zod";
-import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 import {
   Form,
@@ -106,9 +106,7 @@ export default function SignInForm() {
         />
         <Button type="submit" className="flex w-full gap-2">
           SignIn
-          <AiOutlineLoading3Quarters
-            className={cn("animate-spin", { hidden: !isPending })}
-          />
+          <Loader2 className={cn("animate-spin", { hidden: !isPending })} />
         </Button>
       </form>
     </Form>
