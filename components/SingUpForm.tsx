@@ -1,13 +1,6 @@
-"use client";
-
-import { signUpWithEmailAndPassword } from "@/utils/actions";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import * as z from "zod";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -15,10 +8,14 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { AiOutlineLoading3Quarters } from "react-icons/ai";
-import { cn } from "@/lib/utils";
 import { toast } from "@/components/ui/use-toast";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { Loader2 } from "lucide-react";
+import { cn } from "@/lib/utils";
+import * as z from "zod";
 import { useTransition } from "react";
+import { signUpWithEmailAndPassword } from "@/utils/actions";
 
 const FormSchema = z
   .object({
@@ -136,9 +133,7 @@ function SingUpForm() {
         />
         <Button type="submit" className="flex w-full gap-2">
           Register
-          <AiOutlineLoading3Quarters
-            className={cn("animate-spin", { hidden: !isPending })}
-          />
+          <Loader2 className={cn("animate-spin", { hidden: !isPending })} />
         </Button>
       </form>
     </Form>
