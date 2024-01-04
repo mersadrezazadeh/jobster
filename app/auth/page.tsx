@@ -1,6 +1,6 @@
 import { readUserSession } from "@/utils/actions";
 import { redirect } from "next/navigation";
-import AuthForm from "@/components/ui/AuthForm";
+import AuthForm from "@/components/AuthForm";
 
 async function AuthPage() {
   const { data } = await readUserSession();

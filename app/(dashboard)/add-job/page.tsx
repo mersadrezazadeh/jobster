@@ -1,4 +1,4 @@
-import SignOut from "@/components/ui/SignOut";
+import SignOut from "@/components/SignOut";
 import { readUserSession } from "@/utils/actions";
 import { redirect } from "next/navigation";
 

@@ -1,5 +1,5 @@
 import createSupabaseServerClient from "@/utils/supabase/server";
-import { Button } from "./button";
+import { Button } from "./ui/button";
 import { signOut } from "@/utils/actions";
 
 function SignOut() {
