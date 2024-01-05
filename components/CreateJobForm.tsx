@@ -16,9 +16,12 @@ import { createJob } from "@/utils/actions";
 import { useTransition } from "react";
 import { Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { toast } from "./ui/use-toast";
+import { useRouter } from "next/navigation";
 
 function CreateJobForm() {
   const [isPending, startTransition] = useTransition();
+  const router = useRouter();
 
   const form = useForm<createAndUpdateJobType>({
     resolver: zodResolver(createAndUpdateJobSchema),
@@ -37,10 +40,12 @@ function CreateJobForm() {
 
       const { error } = JSON.parse(result);
 
-      if (error?.message) console.log(error.message);
-      else console.log("success");
+      if (error)
+        toast({ variant: "destructive", description: "Something went wrong!" });
+      else toast({ title: "Job added successfully" });
 
       form.reset();
+      router.push("/jobs");
     });
   }
 
