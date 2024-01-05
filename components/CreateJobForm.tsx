@@ -14,6 +14,8 @@ import CustomFormField from "./CustomFormField";
 import CustomFormSelect from "./CustomFormSelect";
 import { createJob } from "@/utils/actions";
 import { useTransition } from "react";
+import { Loader2 } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 function CreateJobForm() {
   const [isPending, startTransition] = useTransition();
@@ -69,8 +71,12 @@ function CreateJobForm() {
             labelText="job mode"
             items={Object.values(JobMode)}
           />
-          <Button type="submit" className="self-end capitalize">
+          <Button
+            type="submit"
+            className="flex w-full gap-2 self-end capitalize"
+          >
             Add job
+            <Loader2 className={cn("animate-spin", { hidden: !isPending })} />
           </Button>
         </div>
       </form>
