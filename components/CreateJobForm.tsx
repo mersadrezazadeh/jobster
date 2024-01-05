@@ -12,8 +12,12 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import CustomFormField from "./CustomFormField";
 import CustomFormSelect from "./CustomFormSelect";
+import { createJob } from "@/utils/actions";
+import { useTransition } from "react";
 
 function CreateJobForm() {
+  const [isPending, startTransition] = useTransition();
+
   const form = useForm<createAndUpdateJobType>({
     resolver: zodResolver(createAndUpdateJobSchema),
     defaultValues: {
@@ -26,7 +30,16 @@ function CreateJobForm() {
   });
 
   function onSubmit(data: createAndUpdateJobType) {
-    console.log(data);
+    startTransition(async () => {
+      const result = await createJob(data);
+
+      const { error } = JSON.parse(result);
+
+      if (error?.message) console.log(error.message);
+      else console.log("success");
+
+      form.reset();
+    });
   }
 
   return (
