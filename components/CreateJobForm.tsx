@@ -78,7 +78,8 @@ function CreateJobForm() {
           />
           <Button
             type="submit"
-            className="flex w-full gap-2 self-end capitalize"
+            disabled={isPending}
+            className="flex gap-2 self-end capitalize"
           >
             Add job
             <Loader2 className={cn("animate-spin", { hidden: !isPending })} />
