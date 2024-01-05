@@ -21,7 +21,7 @@ export enum JobMode {
   Internship = "internship",
 }
 
-export const createAndUpdateJobSchema = z.object({
+export const CreateAndUpdateJobSchema = z.object({
   position: z.string().min(2, {
     message: "Position must be at least 2 characters.",
   }),
@@ -35,7 +35,7 @@ export const createAndUpdateJobSchema = z.object({
   mode: z.nativeEnum(JobMode),
 });
 
-export type createAndUpdateJobType = z.infer<typeof createAndUpdateJobSchema>;
+export type CreateAndUpdateJobType = z.infer<typeof CreateAndUpdateJobSchema>;
 
 export type ReadAllJobsActionTypes = {
   search?: string;

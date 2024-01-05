@@ -2,7 +2,7 @@
 
 import { redirect } from "next/navigation";
 import createSupabaseServerClient from "./supabase/server";
-import { ReadAllJobsActionTypes, createAndUpdateJobType } from "./types";
+import { ReadAllJobsActionTypes, CreateAndUpdateJobType } from "./types";
 
 export async function signUpWithEmailAndPassword({
   email,
@@ -48,7 +48,7 @@ export async function signOut() {
   redirect("/auth");
 }
 
-export async function createJob(newJob: createAndUpdateJobType) {
+export async function createJob(newJob: CreateAndUpdateJobType) {
   const supabase = await createSupabaseServerClient();
 
   const result = await supabase.from("jobs").insert([newJob]).select().single();

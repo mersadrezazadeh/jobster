@@ -3,8 +3,8 @@
 import {
   JobMode,
   JobStatus,
-  createAndUpdateJobSchema,
-  createAndUpdateJobType,
+  CreateAndUpdateJobSchema,
+  CreateAndUpdateJobType,
 } from "@/utils/types";
 import { Form } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
@@ -23,8 +23,8 @@ function CreateJobForm() {
   const [isPending, startTransition] = useTransition();
   const router = useRouter();
 
-  const form = useForm<createAndUpdateJobType>({
-    resolver: zodResolver(createAndUpdateJobSchema),
+  const form = useForm<CreateAndUpdateJobType>({
+    resolver: zodResolver(CreateAndUpdateJobSchema),
     defaultValues: {
       position: "",
       company: "",
@@ -34,7 +34,7 @@ function CreateJobForm() {
     },
   });
 
-  function onSubmit(data: createAndUpdateJobType) {
+  function onSubmit(data: CreateAndUpdateJobType) {
     startTransition(async () => {
       const result = await createJob(data);
 
