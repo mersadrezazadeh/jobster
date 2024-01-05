@@ -1,5 +1,5 @@
 import JobsList from "@/components/JobsList";
-import SearchForm from "@/components/ui/SearchForm";
+import SearchForm from "@/components/SearchForm";
 import { readUserSession } from "@/utils/actions";
 import { redirect } from "next/navigation";
 async function JobsPage() {
