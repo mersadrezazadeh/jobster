@@ -10,7 +10,8 @@ import { Form } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import CustomFormSelect, { CustomFormField } from "./FormComponets";
+import CustomFormField from "./CustomFormField";
+import CustomFormSelect from "./CustomFormSelect";
 
 function CreateJobForm() {
   const form = useForm<createAndUpdateJobType>({

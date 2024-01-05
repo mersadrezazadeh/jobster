@@ -13,30 +13,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Input } from "./ui/input";
-
-type CustomFormFieldProps = {
-  name: string;
-  control: Control<any>;
-};
-
-export function CustomFormField({ name, control }: CustomFormFieldProps) {
-  return (
-    <FormField
-      control={control}
-      name={name}
-      render={({ field }) => (
-        <FormItem>
-          <FormLabel className="capitalize">{name}</FormLabel>
-          <FormControl>
-            <Input {...field} />
-          </FormControl>
-          <FormMessage />
-        </FormItem>
-      )}
-    />
-  );
-}
 
 type CustomFormSelectProps = {
   name: string;
