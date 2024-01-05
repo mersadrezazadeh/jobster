@@ -1,3 +1,4 @@
+import CreateJobForm from "@/components/CreateJobForm";
 import SignOut from "@/components/SignOut";
 import { readUserSession } from "@/utils/actions";
 import { redirect } from "next/navigation";
@@ -9,8 +10,7 @@ async function AddJobPage() {
 
   return (
     <main>
-      ADD JOB
-      <SignOut />
+      <CreateJobForm />
     </main>
   );
 }
