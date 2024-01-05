@@ -36,3 +36,10 @@ export const createAndUpdateJobSchema = z.object({
 });
 
 export type createAndUpdateJobType = z.infer<typeof createAndUpdateJobSchema>;
+
+export type ReadAllJobsActionTypes = {
+  search?: string;
+  jobStatus?: string;
+  from?: number;
+  to?: number;
+};
