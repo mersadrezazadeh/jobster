@@ -1,8 +1,8 @@
 "use server";
 
-import { redirect } from "next/navigation";
 import createSupabaseServerClient from "./supabase/server";
 import { CreateAndUpdateJobType } from "./types";
+import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 
 export async function signUpWithEmailAndPassword({
@@ -92,6 +92,28 @@ export async function deleteJob(id: string) {
   const result = await supabase.from("jobs").delete().eq("id", id);
 
   revalidatePath("/jobs");
+
+  return JSON.stringify(result);
+}
+
+export async function readSingleJob(id: string) {
+  const supabase = await createSupabaseServerClient();
+
+  const result = await supabase.from("jobs").select().eq("id", id).single();
+
+  return result;
+}
+
+export async function updateJob(id: string, newJob: CreateAndUpdateJobType) {
+  const supabase = await createSupabaseServerClient();
+
+  const result = await supabase
+    .from("jobs")
+    .update(newJob)
+    .eq("id", id)
+    .single();
+
+  redirect("/jobs");
 
   return JSON.stringify(result);
 }
