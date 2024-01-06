@@ -11,10 +11,12 @@ async function StatsPage() {
   const { data: status, error: statusError } = await readStatus();
   const { data: dates, error: datesError } = await readDates();
 
+  if (statusError) return <div>{statusError?.message}</div>;
+
   return (
     <main>
+      <StatsContainer status={status} />
       <ChartsContainer />
-      <StatsContainer />
     </main>
   );
 }

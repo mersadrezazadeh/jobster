@@ -1,5 +1,13 @@
+import StatsLoadingCard from "@/components/StatsLoadingCard";
+
 function loading() {
-  return <h2 className="text-xl font-medium capitalize">loading...</h2>;
+  return (
+    <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+      <StatsLoadingCard />
+      <StatsLoadingCard />
+      <StatsLoadingCard />
+    </div>
+  );
 }
 
 export default loading;
