@@ -18,6 +18,7 @@ import CustomFormField from "./CustomFormField";
 import CustomFormSelect from "./CustomFormSelect";
 import { Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { redirect } from "next/navigation";
 
 function UpdateJobForm({ job }: { job: JobType }) {
   const { id, position, company, location, status, mode } = job;
@@ -42,7 +43,10 @@ function UpdateJobForm({ job }: { job: JobType }) {
 
       if (error)
         toast({ variant: "destructive", description: "Something went wrong!" });
-      else toast({ title: "Job updated successfully" });
+      else {
+        toast({ title: "Job updated successfully" });
+        redirect("/jobs");
+      }
     });
   }
 

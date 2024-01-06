@@ -113,7 +113,5 @@ export async function updateJob(id: string, newJob: CreateAndUpdateJobType) {
     .eq("id", id)
     .single();
 
-  redirect("/jobs");
-
   return JSON.stringify(result);
 }
