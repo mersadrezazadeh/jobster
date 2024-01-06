@@ -4,6 +4,7 @@ import createSupabaseServerClient from "./supabase/server";
 import { CreateAndUpdateJobType } from "./types";
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
+import dayjs from "dayjs";
 
 export async function signUpWithEmailAndPassword({
   email,
@@ -112,6 +113,27 @@ export async function updateJob(id: string, newJob: CreateAndUpdateJobType) {
     .update(newJob)
     .eq("id", id)
     .single();
+
+  return JSON.stringify(result);
+}
+
+export async function readStatus() {
+  const supabase = await createSupabaseServerClient();
+
+  const result = await supabase.from("jobs").select("status");
+
+  return JSON.stringify(result);
+}
+
+export async function readDates() {
+  const supabase = await createSupabaseServerClient();
+
+  const sixMonthsAgo = dayjs().subtract(6, "month").toDate();
+
+  const result = await supabase
+    .from("jobs")
+    .select("*")
+    .gt("created_at", sixMonthsAgo);
 
   return JSON.stringify(result);
 }
