@@ -122,7 +122,7 @@ export async function readStatus() {
 
   const result = await supabase.from("jobs").select("status");
 
-  return JSON.stringify(result);
+  return result;
 }
 
 export async function readDates() {
@@ -135,5 +135,5 @@ export async function readDates() {
     .select("*")
     .gt("created_at", sixMonthsAgo);
 
-  return JSON.stringify(result);
+  return result;
 }
