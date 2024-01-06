@@ -1,6 +1,6 @@
 import { JobType } from "@/utils/types";
 
-function JobCard({ job }: JobType) {
+function JobCard({ job }: { job: JobType }) {
   return <div>JOB CARD</div>;
 }
 

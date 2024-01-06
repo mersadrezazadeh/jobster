@@ -2,7 +2,7 @@
 
 import { redirect } from "next/navigation";
 import createSupabaseServerClient from "./supabase/server";
-import { ReadAllJobsActionTypes, CreateAndUpdateJobType } from "./types";
+import { CreateAndUpdateJobType } from "./types";
 
 export async function signUpWithEmailAndPassword({
   email,
@@ -56,12 +56,12 @@ export async function createJob(newJob: CreateAndUpdateJobType) {
   return JSON.stringify(result);
 }
 
-export async function readAllJobs({
-  search,
-  jobStatus,
-  from = 0,
-  to = 9,
-}: ReadAllJobsActionTypes) {
+export async function readAllJobs(
+  search?: string,
+  jobStatus?: string,
+  from: number = 0,
+  to: number = 9,
+) {
   const supabase = await createSupabaseServerClient();
 
   let result;
@@ -73,7 +73,7 @@ export async function readAllJobs({
       .ilike("position", `%${search}%`)
       .range(from, to);
 
-  if (jobStatus)
+  if (jobStatus && jobStatus !== "all")
     result = await supabase
       .from("jobs")
       .select("*")
@@ -82,5 +82,5 @@ export async function readAllJobs({
 
   result = await supabase.from("jobs").select("*").range(from, to);
 
-  return JSON.stringify(result);
+  return result;
 }

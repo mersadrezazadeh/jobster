@@ -1,6 +1,7 @@
 import * as z from "zod";
 
 export type JobType = {
+  id: string;
   updated_at: Date;
   position: string;
   company: string;
@@ -37,9 +38,9 @@ export const CreateAndUpdateJobSchema = z.object({
 
 export type CreateAndUpdateJobType = z.infer<typeof CreateAndUpdateJobSchema>;
 
-export type ReadAllJobsActionTypes = {
-  search?: string;
-  jobStatus?: string;
-  from?: number;
-  to?: number;
-};
+// export type ReadAllJobsActionTypes = {
+//   search?: string;
+//   jobStatus?: string;
+//   from?: number;
+//   to?: number;
+// };
