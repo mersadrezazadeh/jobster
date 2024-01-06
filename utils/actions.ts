@@ -3,6 +3,7 @@
 import { redirect } from "next/navigation";
 import createSupabaseServerClient from "./supabase/server";
 import { CreateAndUpdateJobType } from "./types";
+import { revalidatePath } from "next/cache";
 
 export async function signUpWithEmailAndPassword({
   email,
@@ -83,4 +84,14 @@ export async function readAllJobs(
   result = await supabase.from("jobs").select("*").range(from, to);
 
   return result;
+}
+
+export async function deleteJob(id: string) {
+  const supabase = await createSupabaseServerClient();
+
+  const result = await supabase.from("jobs").delete().eq("id", id);
+
+  revalidatePath("/jobs");
+
+  return JSON.stringify(result);
 }
