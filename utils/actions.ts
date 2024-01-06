@@ -128,12 +128,12 @@ export async function readStatus() {
 export async function readDates() {
   const supabase = await createSupabaseServerClient();
 
-  const sixMonthsAgo = dayjs().subtract(6, "month").toDate();
+  const sixMonthsAgo = dayjs().subtract(6, "month").toISOString();
 
   const result = await supabase
     .from("jobs")
-    .select("*")
-    .gt("created_at", sixMonthsAgo);
+    .select("created_at")
+    .gte("created_at", sixMonthsAgo);
 
   return result;
 }
