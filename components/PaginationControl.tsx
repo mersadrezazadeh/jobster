@@ -95,7 +95,7 @@ function PaginationControl({
 
     if (currentPage < totalPages - 2) {
       pageButtons.push(
-        <Button size="icon" variant="outline" key="dots-1">
+        <Button className="pointer-events-none" size="icon" variant="ghost">
           ...
         </Button>,
       );
@@ -121,7 +121,6 @@ function PaginationControl({
         }}
       >
         <ChevronLeft />
-        Prev
       </Button>
 
       {renderPageButtons()}
@@ -135,7 +134,6 @@ function PaginationControl({
         }}
         variant="outline"
       >
-        Next
         <ChevronRight />
       </Button>
     </div>

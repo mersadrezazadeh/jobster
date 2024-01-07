@@ -14,7 +14,7 @@ import CustomFormField from "./CustomFormField";
 import CustomFormSelect from "./CustomFormSelect";
 import { createJob } from "@/utils/actions";
 import { useTransition } from "react";
-import { Loader2 } from "lucide-react";
+import { Loader2, PlusCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { toast } from "./ui/use-toast";
 import { useRouter } from "next/navigation";
@@ -81,7 +81,7 @@ function CreateJobForm() {
             disabled={isPending}
             className="flex gap-2 self-end capitalize"
           >
-            Add job
+            <PlusCircle />
             <Loader2 className={cn("animate-spin", { hidden: !isPending })} />
           </Button>
         </div>

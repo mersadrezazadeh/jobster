@@ -4,6 +4,7 @@ import { Button } from "./ui/button";
 import { toast } from "@/components/ui/use-toast";
 import { useTransition } from "react";
 import { deleteJob } from "@/utils/actions";
+import { Trash2 } from "lucide-react";
 
 function DeleteJobButton({ id }: { id: string }) {
   const [isPending, startTransition] = useTransition();
@@ -28,7 +29,7 @@ function DeleteJobButton({ id }: { id: string }) {
         variant="destructive"
         size="sm"
       >
-        Delete
+        <Trash2 />
       </Button>
     </form>
   );

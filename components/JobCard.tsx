@@ -10,7 +10,16 @@ import { Separator } from "./ui/separator";
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
 import { JobType } from "@/utils/types";
-import { MapPin, Briefcase, CalendarDays, RadioTower } from "lucide-react";
+import {
+  MapPin,
+  Briefcase,
+  CalendarDays,
+  RadioTower,
+  Pencil,
+  Ban,
+  Speech,
+  Loader,
+} from "lucide-react";
 import Link from "next/link";
 import DeleteJobButton from "./DeleteJobButton";
 import JobInfo from "./JobInfo";
@@ -31,17 +40,39 @@ function JobCard({ job }: { job: JobType }) {
         <CardDescription>{company}</CardDescription>
       </CardHeader>
       <Separator />
-      <CardContent>
+      <CardContent className="space-y-2">
         <JobInfo icon={<Briefcase className="size-4" />} text={mode} />
         <JobInfo icon={<MapPin className="size-4" />} text={location} />
         <JobInfo icon={<CalendarDays className="size-4" />} text={date} />
-        <Badge>
-          <JobInfo icon={<RadioTower className="size-4" />} text={status} />
+        <Badge
+          variant={
+            status === "declined"
+              ? "destructive"
+              : status === "interview"
+                ? "secondary"
+                : "default"
+          }
+          className="w-32 justify-center"
+        >
+          <JobInfo
+            icon={
+              status === "declined" ? (
+                <Ban className="size-4" />
+              ) : status === "interview" ? (
+                <Speech className="size-4" />
+              ) : (
+                <Loader className="size-4" />
+              )
+            }
+            text={status}
+          />
         </Badge>
       </CardContent>
       <CardFooter className="flex gap-4">
         <Button asChild size="sm">
-          <Link href={`/jobs/id?id=${id}`}>edit</Link>
+          <Link href={`/jobs/id?id=${id}`}>
+            <Pencil />
+          </Link>
         </Button>
         <DeleteJobButton id={id} />
       </CardFooter>

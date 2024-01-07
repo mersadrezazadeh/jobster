@@ -10,7 +10,7 @@ import {
 import { Input } from "./ui/input";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { Button } from "./ui/button";
-import { FilterX } from "lucide-react";
+import { FilterX, Search } from "lucide-react";
 
 function SearchForm() {
   const searchParams = useSearchParams();
@@ -71,7 +71,9 @@ function SearchForm() {
       >
         <FilterX />
       </Button>
-      <Button type="submit">Search</Button>
+      <Button type="submit">
+        <Search />
+      </Button>
     </form>
   );
 }

@@ -1,11 +1,13 @@
-import createSupabaseServerClient from "@/utils/supabase/server";
+import { LogOut } from "lucide-react";
 import { Button } from "./ui/button";
 import { signOut } from "@/utils/actions";
 
 function SignOut() {
   return (
     <form action={signOut}>
-      <Button>SignOut</Button>
+      <Button variant="destructive">
+        <LogOut />
+      </Button>
     </form>
   );
 }
