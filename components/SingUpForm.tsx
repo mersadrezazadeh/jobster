@@ -115,7 +115,11 @@ function SingUpForm() {
             </FormItem>
           )}
         />
-        <Button type="submit" className="flex w-full gap-2">
+        <Button
+          type="submit"
+          disabled={isPending}
+          className="flex w-full gap-2"
+        >
           Sign Up
           <Loader2 className={cn("animate-spin", { hidden: !isPending })} />
         </Button>
