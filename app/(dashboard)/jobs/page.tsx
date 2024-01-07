@@ -26,7 +26,12 @@ async function JobsPage({
   return (
     <main>
       <SearchForm />
-      <JobsList jobs={jobs} />
+      <JobsList
+        jobs={jobs}
+        count={count || 0}
+        page={page}
+        totalPages={totalPages}
+      />
     </main>
   );
 }
