@@ -20,7 +20,7 @@ export default function HomePage() {
             never miss an interview. Simplify your job hunt with Jobster.
           </p>
           <Button asChild className="mt-4 font-semibold" size="lg">
-            <Link href="/add-job">Get Started</Link>
+            <Link href="/auth">Get Started</Link>
           </Button>
         </div>
         <Image
