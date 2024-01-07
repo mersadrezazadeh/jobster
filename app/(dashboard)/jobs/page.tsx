@@ -13,9 +13,15 @@ async function JobsPage({
 
   const search = searchParams?.search || "";
   const jobStatus = searchParams?.job_status || "all";
-  const page = searchParams?.page || 1;
+  const page = Number(searchParams?.page) || 1;
 
-  const { data: jobs, error } = await readAllJobs(search, jobStatus, +page);
+  const {
+    data: jobs,
+    count,
+    error,
+  } = await readAllJobs(search, jobStatus, page);
+
+  const totalPages = Math.ceil(count || 0 / 10);
 
   return (
     <main>

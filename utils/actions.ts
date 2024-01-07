@@ -61,28 +61,34 @@ export async function createJob(newJob: CreateAndUpdateJobType) {
 export async function readAllJobs(
   search?: string,
   jobStatus?: string,
-  from: number = 0,
-  to: number = 9,
+  page: number,
 ) {
+  const from = (page - 1) * 10;
+  const to = from + 10 - 1;
   const supabase = await createSupabaseServerClient();
+
+  console.log(search, jobStatus, page);
 
   let result;
 
   if (search)
     result = await supabase
       .from("jobs")
-      .select("*")
-      .ilike("position", `%${search}%`)
+      .select("*", { count: "exact" })
+      .eq("position", search)
       .range(from, to);
 
   if (jobStatus && jobStatus !== "all")
     result = await supabase
       .from("jobs")
-      .select("*")
+      .select("*", { count: "exact" })
       .ilike("status", `%${jobStatus}%`)
       .range(from, to);
 
-  result = await supabase.from("jobs").select("*").range(from, to);
+  result = await supabase
+    .from("jobs")
+    .select("*", { count: "exact" })
+    .range(from, to);
 
   return result;
 }
