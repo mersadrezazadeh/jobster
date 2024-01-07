@@ -51,24 +51,8 @@ function SingUpForm() {
       const { error } = JSON.parse(result);
 
       if (error?.message)
-        toast({
-          variant: "destructive",
-          title: "You submitted the following values:",
-          description: (
-            <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-              <code className="text-white">{error.message}</code>
-            </pre>
-          ),
-        });
-      else
-        toast({
-          title: "You submitted the following values:",
-          description: (
-            <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-              <code className="text-white">successfully registered </code>
-            </pre>
-          ),
-        });
+        toast({ variant: "destructive", title: error.message });
+      else toast({ title: "Signed up in successfully" });
     });
   }
 
@@ -132,7 +116,7 @@ function SingUpForm() {
           )}
         />
         <Button type="submit" className="flex w-full gap-2">
-          Register
+          Sign Up
           <Loader2 className={cn("animate-spin", { hidden: !isPending })} />
         </Button>
       </form>

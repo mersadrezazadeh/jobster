@@ -43,24 +43,8 @@ export default function SignInForm() {
       const { error } = JSON.parse(result);
 
       if (error?.message)
-        toast({
-          title: "You submitted the following values:",
-          description: (
-            <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-              <code className="text-white">{error.message}</code>
-            </pre>
-          ),
-        });
-      else {
-        toast({
-          title: "You submitted the following values:",
-          description: (
-            <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-              <code className="text-white">successfully signed in</code>
-            </pre>
-          ),
-        });
-      }
+        toast({ variant: "destructive", title: error.message });
+      else toast({ title: "Signed in successfully" });
     });
   }
 
@@ -104,8 +88,12 @@ export default function SignInForm() {
             </FormItem>
           )}
         />
-        <Button type="submit" className="flex w-full gap-2">
-          SignIn
+        <Button
+          type="submit"
+          disabled={isPending}
+          className="flex w-full gap-2"
+        >
+          Sign In
           <Loader2 className={cn("animate-spin", { hidden: !isPending })} />
         </Button>
       </form>

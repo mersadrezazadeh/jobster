@@ -10,16 +10,17 @@ function AuthForm() {
     <div className="w-full space-y-5">
       <Tabs defaultValue="signin" className="w-full">
         <TabsList className="grid w-full grid-cols-2">
-          <TabsTrigger value="signin">SignIn</TabsTrigger>
-          <TabsTrigger value="register">Register</TabsTrigger>
+          <TabsTrigger value="signin">Sign In</TabsTrigger>
+          <TabsTrigger value="Signup">Sign Up</TabsTrigger>
         </TabsList>
         <TabsContent value="signin">
           <SignInForm />
         </TabsContent>
-        <TabsContent value="register">
+        <TabsContent value="Signup">
           <SingUpForm />
         </TabsContent>
       </Tabs>
+
       <OAuthForm />
     </div>
   );

@@ -2,21 +2,22 @@
 
 import { Button } from "@/components/ui/button";
 import createSupabaseBrowserClient from "@/utils/supabase/client";
-import React from "react";
+import { Github } from "lucide-react";
 
 export default function OAuthForm() {
   const supabase = createSupabaseBrowserClient();
 
   function signInWithGithub() {
     supabase.auth.signInWithOAuth({
-      provider: "google",
-      options: { redirectTo: `${location.origin}/auth/callback/` },
+      provider: "github",
+      options: { redirectTo: `${location.origin}/auth/v1/callback/` },
     });
   }
 
   return (
-    <Button onClick={signInWithGithub} className="w-full">
-      Login With Github
+    <Button onClick={signInWithGithub} className="flex w-full gap-2">
+      Sign In With GitHub
+      <Github />
     </Button>
   );
 }
