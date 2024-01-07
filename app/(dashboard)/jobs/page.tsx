@@ -24,7 +24,7 @@ async function JobsPage({
   const totalPages = Math.ceil((count || 0) / 10);
 
   return (
-    <main>
+    <>
       <SearchForm />
       <JobsList
         jobs={jobs}
@@ -32,7 +32,7 @@ async function JobsPage({
         page={page}
         totalPages={totalPages}
       />
-    </main>
+    </>
   );
 }
 

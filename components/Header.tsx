@@ -2,9 +2,9 @@ import LinksDropdown from "./LinksDropdown";
 import SignOut from "./SignOut";
 import ThemeToggle from "./ThemeToggle";
 
-function Navbar() {
+function Header() {
   return (
-    <nav className="flex items-center justify-between bg-muted px-4 py-4 sm:px-16 lg:px-24">
+    <header className="flex items-center justify-between border border-b bg-muted px-4 py-4 sm:px-16 lg:px-24">
       <div>
         <LinksDropdown />
       </div>
@@ -12,8 +12,8 @@ function Navbar() {
         <ThemeToggle />
         <SignOut />
       </div>
-    </nav>
+    </header>
   );
 }
 
-export default Navbar;
+export default Header;

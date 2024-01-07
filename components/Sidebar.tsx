@@ -11,22 +11,23 @@ function Sidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="h-full bg-muted px-8 py-4">
+    <aside className="row-span-full hidden h-screen border bg-muted px-8 py-4 lg:col-span-1 lg:block">
       <Image src={Logo} alt="Jobster Logo" className="mx-auto" />
-      <div className="mt-20 flex flex-col gap-y-4">
+      <nav className="mt-20 flex flex-col gap-y-4">
         {links.map((link) => (
           <Button
             asChild
-            variant={pathname === link.href ? "default" : "link"}
+            variant={pathname === link.href ? "default" : "secondary"}
             key={link.href}
+            className="flex justify-start gap-3 px-12"
           >
             <Link href={link.href}>
               {link.icon}
-              <span className="capitalize">{link.label}</span>
+              <span className="text-lg capitalize">{link.label}</span>
             </Link>
           </Button>
         ))}
-      </div>
+      </nav>
     </aside>
   );
 }

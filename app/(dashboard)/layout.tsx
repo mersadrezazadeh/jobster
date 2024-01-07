@@ -1,19 +1,17 @@
-import Navbar from "@/components/Navbar";
+import Header from "@/components/Header";
 import Sidebar from "@/components/Sidebar";
 
 function DashboardLayout({ children }: { children: React.ReactNode }) {
   return (
-    <main className="grid lg:grid-cols-5">
-      <div className="hidden lg:col-span-1 lg:block lg:min-h-screen">
-        <Sidebar />
-      </div>
+    <div className="grid h-screen grid-rows-[auto,1fr] lg:grid-cols-[300px,1fr]">
+      <Sidebar />
 
-      <div className="lg:col-span-4">
-        <Navbar />
+      <Header />
 
-        <div className="px-4 py-16 sm:px-8 lg:px-16">{children}</div>
-      </div>
-    </main>
+      <main className="overflow-y-scroll py-10">
+        <div className="container">{children}</div>
+      </main>
+    </div>
   );
 }
 
