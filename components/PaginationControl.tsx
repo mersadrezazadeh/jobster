@@ -111,7 +111,6 @@ function PaginationControl({
 
   return (
     <div className="flex  gap-x-2">
-      {/* prev */}
       <Button
         className="flex items-center gap-x-2 "
         variant="outline"
@@ -122,10 +121,11 @@ function PaginationControl({
         }}
       >
         <ChevronLeft />
-        prev
+        Prev
       </Button>
+
       {renderPageButtons()}
-      {/* next */}
+
       <Button
         className="flex items-center gap-x-2 "
         onClick={() => {
@@ -135,7 +135,7 @@ function PaginationControl({
         }}
         variant="outline"
       >
-        next
+        Next
         <ChevronRight />
       </Button>
     </div>

@@ -25,7 +25,7 @@ function JobsList({
         {jobs?.map((job) => <JobCard key={job.id} job={job} />)}
       </div>
 
-      <div className="mb-8 flex items-center justify-between">
+      <div className="flex flex-col items-center gap-4">
         <h2 className="text-xl font-semibold capitalize ">
           {count} jobs found
         </h2>
