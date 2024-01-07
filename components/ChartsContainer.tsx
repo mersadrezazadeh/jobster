@@ -9,17 +9,22 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
-import { string } from "zod";
+import dayjs from "dayjs";
 
 function ChartsContainer({ dates }: { dates: { created_at: string }[] }) {
-  const data = dates.reduce((acc: string[], date) => {
-    acc.push(date.created_at);
+  const data = dates.reduce(
+    (acc, date) => {
+      const formattedDate = dayjs(date.created_at).format("MMM YY");
 
-    return acc;
-  }, []);
+      const existingEntry = acc.find((entry) => entry.date === formattedDate);
 
-  // console.log(dates);
-  console.log(data);
+      if (existingEntry) existingEntry.count++;
+      else acc.push({ date: formattedDate, count: 1 });
+
+      return acc;
+    },
+    [] as { date: string; count: number }[],
+  );
 
   return (
     <section className="mt-16">
