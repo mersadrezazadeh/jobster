@@ -10,6 +10,7 @@ import {
 import { Input } from "./ui/input";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { Button } from "./ui/button";
+import { FilterX } from "lucide-react";
 
 function SearchForm() {
   const searchParams = useSearchParams();
@@ -25,19 +26,23 @@ function SearchForm() {
     let params = new URLSearchParams();
     const formData = new FormData(e.currentTarget);
 
-    const search = formData.get("search") as string;
-    const jobStatus = formData.get("job_status") as string;
+    const searchValue = formData.get("search") as string;
+    const jobStatusValue = formData.get("job_status") as string;
 
-    params.set("search", search);
-    params.set("job_status", jobStatus);
+    params.set("search", searchValue);
+    params.set("job_status", jobStatusValue);
 
     router.push(`${pathname}?${params.toString()}`);
+  }
+
+  function handleClearFilter() {
+    router.push("/jobs");
   }
 
   return (
     <form
       onSubmit={handleSubmit}
-      className="mb-16 grid gap-4 rounded-lg bg-muted p-8  sm:grid-cols-2 md:grid-cols-3"
+      className="mb-16 grid gap-4 rounded-lg bg-muted p-8 sm:grid-cols-2 md:grid-cols-[1fr,1fr,auto,1fr]"
     >
       <Input
         type="text"
@@ -57,6 +62,15 @@ function SearchForm() {
           ))}
         </SelectContent>
       </Select>
+      <Button
+        type="button"
+        variant="destructive"
+        size="icon"
+        disabled={search === ""}
+        onClick={handleClearFilter}
+      >
+        <FilterX />
+      </Button>
       <Button type="submit">Search</Button>
     </form>
   );
