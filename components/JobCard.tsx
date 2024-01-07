@@ -14,11 +14,10 @@ import {
   MapPin,
   Briefcase,
   CalendarDays,
-  RadioTower,
   Pencil,
   Ban,
   Speech,
-  Loader,
+  Hourglass,
 } from "lucide-react";
 import Link from "next/link";
 import DeleteJobButton from "./DeleteJobButton";
@@ -61,7 +60,7 @@ function JobCard({ job }: { job: JobType }) {
               ) : status === "interview" ? (
                 <Speech className="size-4" />
               ) : (
-                <Loader className="size-4" />
+                <Hourglass className="size-4" />
               )
             }
             text={status}
