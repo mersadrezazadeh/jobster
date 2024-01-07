@@ -42,16 +42,17 @@ function SearchForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="mb-16 grid gap-4 rounded-lg bg-muted p-8 sm:grid-cols-2 md:grid-cols-[1fr,1fr,auto,1fr]"
+      className="mb-16 grid grid-cols-[auto,1fr] gap-4 rounded-lg bg-muted p-8 md:grid-cols-[1fr,1fr,auto,1fr]"
     >
       <Input
         type="text"
         name="search"
         placeholder="Search Jobs..."
         defaultValue={search}
+        className="col-span-full md:col-span-1"
       />
       <Select>
-        <SelectTrigger>
+        <SelectTrigger className="col-span-full md:col-span-1">
           <SelectValue />
         </SelectTrigger>
         <SelectContent>
