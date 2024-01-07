@@ -2,6 +2,7 @@
 
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { Button } from "./ui/button";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 function PaginationControl({
   currentPage,
@@ -34,10 +35,10 @@ function PaginationControl({
         <Button
           key={page}
           size="icon"
-          variant={currentPage === page ? "default" : "outline"}
-          onClick={() => handlePageChange(page)}
+          variant={currentPage === page + 1 ? "default" : "outline"}
+          onClick={() => handlePageChange(page + 1)}
         >
-          {page}
+          {page + 1}
         </Button>
       ))}
     </div>

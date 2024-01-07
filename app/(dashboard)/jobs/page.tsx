@@ -21,7 +21,7 @@ async function JobsPage({
     error,
   } = await readAllJobs(search, jobStatus, page);
 
-  const totalPages = Math.ceil(count || 0 / 10);
+  const totalPages = Math.ceil((count || 0) / 10);
 
   return (
     <main>
