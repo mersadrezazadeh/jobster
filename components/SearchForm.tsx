@@ -11,6 +11,7 @@ import { Input } from "./ui/input";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { Button } from "./ui/button";
 import { FilterX, Search } from "lucide-react";
+import { STATUS_OPTIONS } from "@/utils/constants";
 
 function SearchForm() {
   const searchParams = useSearchParams();
@@ -27,7 +28,7 @@ function SearchForm() {
     const formData = new FormData(e.currentTarget);
 
     const searchValue = formData.get("search") as string;
-    const jobStatusValue = formData.get("job_status") as string;
+    const jobStatusValue = formData.get("job-status") as string;
 
     params.set("search", searchValue);
     params.set("job_status", jobStatusValue);
@@ -51,12 +52,12 @@ function SearchForm() {
         defaultValue={search}
         className="col-span-full md:col-span-1"
       />
-      <Select>
+      <Select name="job-status" defaultValue={jobStatus}>
         <SelectTrigger className="col-span-full md:col-span-1">
           <SelectValue />
         </SelectTrigger>
         <SelectContent>
-          {["all", ...Object.values(jobStatus)].map((status) => (
+          {STATUS_OPTIONS.map((status) => (
             <SelectItem key={status} value={status}>
               {status}
             </SelectItem>
