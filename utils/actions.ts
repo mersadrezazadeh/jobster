@@ -65,30 +65,20 @@ export async function readAllJobs(
 ) {
   const from = (page - 1) * 10;
   const to = from + 10 - 1;
+
   const supabase = await createSupabaseServerClient();
 
-  console.log(search, jobStatus, page);
-
-  let result;
+  let query = supabase.from("jobs").select("*", { count: "exact" });
 
   if (search)
-    result = await supabase
-      .from("jobs")
-      .select("*", { count: "exact" })
-      .eq("position", search)
+    query
+      .or(`or(position.ilike.%${search}%,company.ilike.%${search}%)`)
       .range(from, to);
+  else if (jobStatus && jobStatus !== "all")
+    query.ilike("status", `%${jobStatus}%`).range(from, to);
+  else query.range(from, to);
 
-  if (jobStatus && jobStatus !== "all")
-    result = await supabase
-      .from("jobs")
-      .select("*", { count: "exact" })
-      .ilike("status", `%${jobStatus}%`)
-      .range(from, to);
-
-  result = await supabase
-    .from("jobs")
-    .select("*", { count: "exact" })
-    .range(from, to);
+  const result = await query;
 
   return result;
 }
