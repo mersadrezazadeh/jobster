@@ -18,14 +18,10 @@ function LinksDropdown() {
           <span className="sr-only">Toggle links</span>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent
-        className="w-52 lg:hidden "
-        align="start"
-        sideOffset={25}
-      >
+      <DropdownMenuContent className="z-[99999] w-40 lg:hidden" align="start">
         {links.map((link) => (
           <DropdownMenuItem key={link.href}>
-            <Link href={link.href} className="flex items-center gap-x-2">
+            <Link href={link.href} className="flex w-full items-center gap-x-2">
               {link.icon}
               <span className="capitalize">{link.label}</span>
             </Link>

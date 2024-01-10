@@ -11,7 +11,7 @@ function Sidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="row-span-full hidden h-screen border bg-muted px-8 py-4 lg:col-span-1 lg:block">
+    <aside className="row-span-full hidden h-screen border bg-muted px-8 py-4 shadow-2xl lg:col-span-1 lg:block">
       <Image src={Logo} alt="Jobster Logo" className="mx-auto" />
       <nav className="mt-20 flex flex-col gap-y-4">
         {links.map((link) => (
