@@ -10,8 +10,6 @@ export type JobType = {
   mode: string;
   date: Date;
   remote: boolean;
-  min_salary?: number;
-  max_salary?: number;
 };
 
 export enum JobStatus {
@@ -48,8 +46,6 @@ export const CreateAndUpdateJobSchema = z.object({
   mode: z.nativeEnum(JobMode),
   remote: z.nativeEnum(Remote),
   date: z.string(),
-  min_salary: z.string().optional(),
-  max_salary: z.string().optional(),
 });
 
 export type CreateAndUpdateJobType = z.infer<typeof CreateAndUpdateJobSchema>;

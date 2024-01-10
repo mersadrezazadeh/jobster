@@ -34,9 +34,7 @@ function CreateJobForm() {
       status: JobStatus.Applied,
       mode: JobMode.FullTime,
       remote: Remote.No,
-      date: "",
-      min_salary: "",
-      max_salary: "",
+      date: new Date().toISOString(),
     },
   });
 
