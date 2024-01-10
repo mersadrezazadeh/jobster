@@ -59,9 +59,12 @@ export async function createJob(newJob: CreateAndUpdateJobType) {
 }
 
 export async function readAllJobs(
+  page: number = 1,
   search?: string,
   jobStatus?: string,
-  page: number = 1,
+  jobMode?: string,
+  jobRemote?: string,
+  jobSalary?: string,
 ) {
   const from = (page - 1) * 10;
   const to = from + 10 - 1;
