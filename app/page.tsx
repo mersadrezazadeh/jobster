@@ -15,9 +15,9 @@ export default function HomePage() {
           <h1 className="whitespace-nowrap text-4xl font-bold capitalize lg:text-7xl">
             Job <span className="text-primary">Tracking</span> app
           </h1>
-          <p className="mt-4 max-w-md leading-loose">
+          <p className="mt-4 max-w-md text-lg leading-loose">
             Your personal assistant for job search. Track job applications and
-            never miss an interview. Simplify your job hunt with Jobster.
+            simplify your job hunt with Jobster.
           </p>
           <Button asChild className="mt-4 font-semibold" size="lg">
             <Link href="/auth">Get Started</Link>
