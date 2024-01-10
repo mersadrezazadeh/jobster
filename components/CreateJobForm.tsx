@@ -34,7 +34,7 @@ function CreateJobForm() {
       status: JobStatus.Applied,
       mode: JobMode.FullTime,
       remote: Remote.No,
-      date: new Date().toISOString(),
+      date: new Date(),
     },
   });
 
@@ -88,11 +88,7 @@ function CreateJobForm() {
             items={Object.values(Remote)}
           />
 
-          <CustomDatePicker
-            name="date"
-            control={form.control}
-            labelText="date"
-          />
+          <CustomDatePicker name="date" control={form.control} />
 
           <Button
             type="submit"

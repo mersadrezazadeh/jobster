@@ -45,7 +45,7 @@ export const CreateAndUpdateJobSchema = z.object({
   status: z.nativeEnum(JobStatus),
   mode: z.nativeEnum(JobMode),
   remote: z.nativeEnum(Remote),
-  date: z.string(),
+  date: z.date(),
 });
 
 export type CreateAndUpdateJobType = z.infer<typeof CreateAndUpdateJobSchema>;

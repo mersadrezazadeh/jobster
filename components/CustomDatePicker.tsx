@@ -33,10 +33,9 @@ function CustomDatePicker({ name, control, labelText }: CustomDatePickerProps) {
         <FormItem>
           <FormLabel className="capitalize">{labelText || name}</FormLabel>
           <Popover>
-            <PopoverTrigger>
+            <PopoverTrigger asChild>
               <FormControl>
                 <Button
-                  type="button"
                   variant="outline"
                   className={cn(
                     "w-[240px] pl-3 text-left font-normal",
