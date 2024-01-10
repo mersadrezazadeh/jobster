@@ -102,10 +102,13 @@ function CreateJobForm() {
           <Button
             type="submit"
             disabled={isPending}
-            className="flex gap-2 self-end capitalize"
+            className="flex gap-2 self-end capitalize md:col-span-2 lg:col-span-1"
           >
-            <PlusCircle />
-            <Loader2 className={cn("animate-spin", { hidden: !isPending })} />
+            {isPending ? (
+              <Loader2 className={cn("animate-spin")} />
+            ) : (
+              <PlusCircle />
+            )}
           </Button>
         </div>
       </form>

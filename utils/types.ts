@@ -28,8 +28,8 @@ export enum JobMode {
 }
 
 export enum JobRemote {
-  Yes = "Yes",
   No = "No",
+  Yes = "Yes",
 }
 
 export enum JobSalary {
