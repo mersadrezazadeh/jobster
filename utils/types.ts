@@ -8,18 +8,30 @@ export type JobType = {
   location: string;
   status: string;
   mode: string;
+  date: Date;
+  remote: boolean;
+  min_salary?: number;
+  max_salary?: number;
 };
 
 export enum JobStatus {
-  Pending = "pending",
-  Interview = "interview",
-  Declined = "declined",
+  Applied = "Applied",
+  Interviewed = "Interviewed",
+  Accepted = "Accepted",
+  Rejected = "Rejected",
+  Offered = "Offered",
+  Wishlist = "Wishlist",
 }
 
 export enum JobMode {
-  FullTime = "full-time",
-  PartTime = "part-time",
-  Internship = "internship",
+  FullTime = "Full-Time",
+  PartTime = "Part-Time",
+  Internship = "Internship",
+}
+
+export enum Remote {
+  Yes = "Yes",
+  No = "No",
 }
 
 export const CreateAndUpdateJobSchema = z.object({
@@ -34,6 +46,10 @@ export const CreateAndUpdateJobSchema = z.object({
   }),
   status: z.nativeEnum(JobStatus),
   mode: z.nativeEnum(JobMode),
+  remote: z.nativeEnum(Remote),
+  date: z.string(),
+  min_salary: z.string().optional(),
+  max_salary: z.string().optional(),
 });
 
 export type CreateAndUpdateJobType = z.infer<typeof CreateAndUpdateJobSchema>;

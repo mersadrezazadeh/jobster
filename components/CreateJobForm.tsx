@@ -3,6 +3,7 @@
 import {
   JobMode,
   JobStatus,
+  Remote,
   CreateAndUpdateJobSchema,
   CreateAndUpdateJobType,
 } from "@/utils/types";
@@ -29,8 +30,12 @@ function CreateJobForm() {
       position: "",
       company: "",
       location: "",
-      status: JobStatus.Pending,
+      status: JobStatus.Applied,
       mode: JobMode.FullTime,
+      remote: Remote.No,
+      date: "",
+      min_salary: "",
+      max_salary: "",
     },
   });
 
@@ -76,6 +81,14 @@ function CreateJobForm() {
             labelText="job mode"
             items={Object.values(JobMode)}
           />
+
+          <CustomFormSelect
+            name="remote"
+            control={form.control}
+            labelText="remote"
+            items={Object.values(Remote)}
+          />
+
           <Button
             type="submit"
             disabled={isPending}
