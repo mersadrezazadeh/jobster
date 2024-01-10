@@ -38,7 +38,7 @@ function CustomDatePicker({ name, control, labelText }: CustomDatePickerProps) {
                 <Button
                   variant="outline"
                   className={cn(
-                    "w-full pl-3 text-left font-normal",
+                    "w-full pl-3 text-left font-normal hover:bg-white dark:hover:bg-slate-950",
                     !field.value && "text-muted-foreground",
                   )}
                 >
