@@ -1,3 +1,4 @@
+import JobsFilters from "@/components/JobsFilters";
 import JobsList from "@/components/JobsList";
 import SearchForm from "@/components/SearchForm";
 import { readAllJobs, readUserSession } from "@/utils/actions";
@@ -26,6 +27,7 @@ async function JobsPage({
   return (
     <>
       <SearchForm />
+      <JobsFilters />
       <JobsList
         jobs={jobs}
         count={count || 0}
