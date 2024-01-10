@@ -2,13 +2,12 @@ import * as z from "zod";
 
 export type JobType = {
   id: string;
-  created_at: Date;
+  date: Date;
   position: string;
   company: string;
   location: string;
   status: string;
   mode: string;
-  date: Date;
   remote: boolean;
   salary: string;
 };
@@ -34,10 +33,10 @@ export enum JobRemote {
 }
 
 export enum JobSalary {
-  Entry = "Under 50.000 $",
-  Junior = "Between 50.000 and 70.000 $",
-  Mid = "Between 70.000 and 100.000 $",
-  Senior = "Above 100.000 $",
+  Entry = "Under 50.000$",
+  Junior = "50.000 to 70.000$",
+  Mid = "70.000 to 100.000$",
+  Senior = "Above 100.000$",
 }
 
 export const CreateAndUpdateJobSchema = z.object({
