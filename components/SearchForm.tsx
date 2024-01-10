@@ -10,8 +10,9 @@ import {
 import { Input } from "./ui/input";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { Button } from "./ui/button";
-import { FilterX, Search } from "lucide-react";
-import { STATUS_OPTIONS } from "@/utils/constants";
+import { Search } from "lucide-react";
+import { JobStatus } from "@/utils/types";
+import ClearFilters from "./ClearFilters";
 
 function SearchForm() {
   const searchParams = useSearchParams();
@@ -19,7 +20,7 @@ function SearchForm() {
   const router = useRouter();
 
   const search = searchParams.get("search") || "";
-  const jobStatus = searchParams.get("job_status") || "all";
+  // const jobStatus = searchParams.get("job_status") || "All";
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -30,20 +31,18 @@ function SearchForm() {
     const searchValue = formData.get("search") as string;
     const jobStatusValue = formData.get("job-status") as string;
 
+    if (!searchValue) return;
+
     params.set("search", searchValue);
     params.set("job_status", jobStatusValue);
 
     router.push(`${pathname}?${params.toString()}`);
   }
 
-  function handleClearFilter() {
-    router.push("/jobs");
-  }
-
   return (
     <form
       onSubmit={handleSubmit}
-      className="mb-16 grid grid-cols-[auto,1fr] gap-4 rounded-lg bg-muted p-8 md:grid-cols-[1fr,1fr,auto,1fr]"
+      className="mb-16 grid grid-cols-[auto,1fr] gap-4 rounded-lg bg-muted p-8 shadow-lg md:grid-cols-[2fr,auto,1fr]"
     >
       <Input
         type="text"
@@ -52,27 +51,21 @@ function SearchForm() {
         defaultValue={search}
         className="col-span-full md:col-span-1"
       />
-      <Select name="job-status" defaultValue={jobStatus}>
+
+      {/* <Select name="job-status" defaultValue="All">
         <SelectTrigger className="col-span-full md:col-span-1">
           <SelectValue />
         </SelectTrigger>
         <SelectContent>
-          {STATUS_OPTIONS.map((status) => (
+          {["All", ...Object.values(JobStatus)].map((status) => (
             <SelectItem key={status} value={status}>
               {status}
             </SelectItem>
           ))}
         </SelectContent>
-      </Select>
-      <Button
-        type="button"
-        variant="destructive"
-        size="icon"
-        disabled={search === ""}
-        onClick={handleClearFilter}
-      >
-        <FilterX />
-      </Button>
+      </Select> */}
+      <ClearFilters path="/jobs" disabled={search === ""} />
+
       <Button type="submit">
         <Search />
       </Button>
