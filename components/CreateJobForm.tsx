@@ -19,6 +19,7 @@ import { Loader2, PlusCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { toast } from "./ui/use-toast";
 import { useRouter } from "next/navigation";
+import CustomDatePicker from "./CustomDatePicker";
 
 function CreateJobForm() {
   const [isPending, startTransition] = useTransition();
@@ -87,6 +88,12 @@ function CreateJobForm() {
             control={form.control}
             labelText="remote"
             items={Object.values(Remote)}
+          />
+
+          <CustomDatePicker
+            name="date"
+            control={form.control}
+            labelText="date"
           />
 
           <Button
