@@ -10,6 +10,7 @@ export type JobType = {
   mode: string;
   date: Date;
   remote: boolean;
+  salary: string;
 };
 
 export enum JobStatus {
@@ -27,9 +28,16 @@ export enum JobMode {
   Internship = "Internship",
 }
 
-export enum Remote {
+export enum JobRemote {
   Yes = "Yes",
   No = "No",
+}
+
+export enum JobSalary {
+  Entry = "Under 50.000 $",
+  Junior = "Between 50.000 and 70.000 $",
+  Mid = "Between 70.000 and 100.000 $",
+  Senior = "Above 100.000 $",
 }
 
 export const CreateAndUpdateJobSchema = z.object({
@@ -44,7 +52,8 @@ export const CreateAndUpdateJobSchema = z.object({
   }),
   status: z.nativeEnum(JobStatus),
   mode: z.nativeEnum(JobMode),
-  remote: z.nativeEnum(Remote),
+  remote: z.nativeEnum(JobRemote),
+  salary: z.nativeEnum(JobSalary),
   date: z.date(),
 });
 

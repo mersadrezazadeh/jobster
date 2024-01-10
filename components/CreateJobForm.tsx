@@ -3,9 +3,10 @@
 import {
   JobMode,
   JobStatus,
-  Remote,
+  JobRemote,
   CreateAndUpdateJobSchema,
   CreateAndUpdateJobType,
+  JobSalary,
 } from "@/utils/types";
 import { Form } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
@@ -33,7 +34,8 @@ function CreateJobForm() {
       location: "",
       status: JobStatus.Applied,
       mode: JobMode.FullTime,
-      remote: Remote.No,
+      remote: JobRemote.No,
+      salary: JobSalary.Entry,
       date: new Date(),
     },
   });
@@ -85,7 +87,14 @@ function CreateJobForm() {
             name="remote"
             control={form.control}
             labelText="remote"
-            items={Object.values(Remote)}
+            items={Object.values(JobRemote)}
+          />
+
+          <CustomFormSelect
+            name="salary"
+            control={form.control}
+            labelText="salary"
+            items={Object.values(JobSalary)}
           />
 
           <CustomDatePicker name="date" control={form.control} />
