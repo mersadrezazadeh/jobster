@@ -49,7 +49,7 @@ function UpdateJobForm({ job }: { job: JobType }) {
       mode: (mode as JobMode) || JobMode.FullTime,
       remote: (remote as JobRemote) || JobRemote.No,
       salary: (salary as JobSalary) || JobSalary.Entry,
-      date: date || new Date(),
+      date: new Date(date) || new Date(),
     },
   });
 
