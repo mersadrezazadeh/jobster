@@ -70,7 +70,7 @@ function JobCard({ job }: { job: JobType }) {
             variant={
               (status === "Applied" && "default") ||
               (status === "Rejected" && "destructive") ||
-              (status === "Interviewed" && "yellow") ||
+              (status === "Interviewed" && "violet") ||
               (status == "Accepted" && "green") ||
               (status === "Offered" && "orange") ||
               (status === "Wishlist" && "rose") ||
@@ -91,10 +91,10 @@ function JobCard({ job }: { job: JobType }) {
             />
           </Badge>
           {remote === "Yes" && (
-            <Badge variant="violet" className="w-32 justify-center">
+            <Badge variant="yellow" className="w-32 justify-center">
               <JobInfo icon={<RadioTower className="size-4" />} text="Remote" />
             </Badge>
-          )}{" "}
+          )}
         </div>
       </CardContent>
       <CardFooter className="flex gap-4">
