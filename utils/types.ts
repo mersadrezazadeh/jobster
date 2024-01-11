@@ -8,7 +8,7 @@ export type JobType = {
   location: string;
   status: string;
   mode: string;
-  remote: boolean;
+  remote: string;
   salary: string;
 };
 
@@ -33,9 +33,9 @@ export enum JobRemote {
 }
 
 export enum JobSalary {
-  Entry = "Under 50.000$",
-  Junior = "50.000 to 70.000$",
-  Mid = "70.000 to 100.000$",
+  Entry = "Below 50.000$",
+  Junior = "50-70.000$",
+  Mid = "70-100.000$",
   Senior = "Above 100.000$",
 }
 

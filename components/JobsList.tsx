@@ -1,7 +1,4 @@
-import { readAllJobs } from "@/utils/actions";
 import { JobType } from "@/utils/types";
-import { useSearchParams } from "next/navigation";
-import { useTransition } from "react";
 import JobCard from "./JobCard";
 import PaginationControl from "./PaginationControl";
 
@@ -11,12 +8,12 @@ function JobsList({
   page,
   totalPages,
 }: {
-  jobs: JobType[] | null;
+  jobs: JobType[] | null | undefined;
   count: number;
   page: number;
   totalPages: number;
 }) {
-  if (jobs !== null && !jobs.length)
+  if (jobs !== null && !jobs?.length)
     return <h2 className="text-xl">No Jobs Found...</h2>;
 
   return (

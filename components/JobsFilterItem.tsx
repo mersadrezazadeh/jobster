@@ -14,8 +14,6 @@ type JobsFilterItemProps = {
 };
 
 function JobsFilterItem({ name, labelText, items }: JobsFilterItemProps) {
-  const salaryValues = ["All", "Entry", "Junior", "Mid", "Senior"];
-
   return (
     <div className="row-start-2">
       <Label htmlFor={name}>{labelText}</Label>
@@ -24,11 +22,8 @@ function JobsFilterItem({ name, labelText, items }: JobsFilterItemProps) {
           <SelectValue />
         </SelectTrigger>
         <SelectContent>
-          {items.map((value, i) => (
-            <SelectItem
-              key={value}
-              value={name === "job-salary" ? salaryValues[i] : value}
-            >
+          {items.map((value) => (
+            <SelectItem key={value} value={value}>
               {value}
             </SelectItem>
           ))}

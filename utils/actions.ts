@@ -58,14 +58,7 @@ export async function createJob(newJob: CreateAndUpdateJobType) {
   return JSON.stringify(result);
 }
 
-export async function readAllJobs(
-  page: number = 1,
-  search?: string,
-  jobStatus?: string,
-  jobMode?: string,
-  jobRemote?: string,
-  jobSalary?: string,
-) {
+export async function readAllJobs(page: number = 1, search?: string) {
   const from = (page - 1) * 10;
   const to = from + 10 - 1;
 
@@ -77,8 +70,6 @@ export async function readAllJobs(
     query
       .or(`or(position.ilike.%${search}%,company.ilike.%${search}%)`)
       .range(from, to);
-  else if (jobStatus && jobStatus !== "all")
-    query.ilike("status", `%${jobStatus}%`).range(from, to);
   else query.range(from, to);
 
   const result = await query;
