@@ -5,6 +5,7 @@ import { CreateAndUpdateJobType } from "./types";
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import dayjs from "dayjs";
+import { PAGE_SIZE } from "./constants";
 
 export async function signUpWithEmailAndPassword({
   email,
@@ -58,9 +59,16 @@ export async function createJob(newJob: CreateAndUpdateJobType) {
   return JSON.stringify(result);
 }
 
-export async function readAllJobs(page: number = 1, search?: string) {
-  const from = (page - 1) * 10;
-  const to = from + 10 - 1;
+export async function readAllJobs(
+  page: number = 1,
+  search?: string,
+  status?: string,
+  mode?: string,
+  remote?: string,
+  salary?: string,
+) {
+  const from = (page - 1) * PAGE_SIZE;
+  const to = from + PAGE_SIZE - 1;
 
   const supabase = await createSupabaseServerClient();
 

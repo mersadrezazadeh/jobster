@@ -1,24 +1,20 @@
+"use client";
+
 import { JobMode, JobRemote, JobSalary, JobStatus } from "@/utils/types";
 import { Button } from "./ui/button";
 import JobsFilterItem from "./JobsFilterItem";
 import ClearFilters from "./ClearFilters";
 import { Filter } from "lucide-react";
+import { usePathname, useRouter } from "next/navigation";
 
-function JobsFilters({
-  setFilters,
-}: {
-  setFilters: React.Dispatch<
-    React.SetStateAction<{
-      status: string;
-      mode: string;
-      remote: string;
-      salary: string;
-    }>
-  >;
-}) {
+function JobsFilters() {
+  const pathname = usePathname();
+  const router = useRouter();
+
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
+    let params = new URLSearchParams();
     const formData = new FormData(e.currentTarget);
 
     const status = formData.get("status") as string;
@@ -26,7 +22,12 @@ function JobsFilters({
     const remote = formData.get("remote") as string;
     const salary = formData.get("salary") as string;
 
-    setFilters({ status, mode, remote, salary });
+    params.set("status", status);
+    params.set("mode", mode);
+    params.set("remote", remote);
+    params.set("salary", salary);
+
+    router.push(`${pathname}?${params.toString()}`);
   }
 
   return (
