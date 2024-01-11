@@ -3,17 +3,33 @@ import StatsCard from "../StatsCard";
 function StatsContainer({
   status,
 }: {
-  status: { status: "pending" | "declined" | "interview" }[];
+  status: {
+    status:
+      | "Applied"
+      | "Interviewed"
+      | "Accepted"
+      | "Rejected"
+      | "Offered"
+      | "Wishlist";
+  }[];
 }) {
-  const pending = status.filter((job) => job.status === "pending").length;
-  const declined = status.filter((job) => job.status === "declined").length;
-  const interviews = status.filter((job) => job.status === "interview").length;
+  const applied = status.filter((job) => job.status === "Applied").length;
+  const interviewed = status.filter(
+    (job) => job.status === "Interviewed",
+  ).length;
+  const accepted = status.filter((job) => job.status === "Accepted").length;
+  const rejected = status.filter((job) => job.status === "Rejected").length;
+  const offered = status.filter((job) => job.status === "Offered").length;
+  const wishlist = status.filter((job) => job.status === "Wishlist").length;
 
   return (
     <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-      <StatsCard title="pending jobs" value={pending} />
-      <StatsCard title="interviews set" value={interviews} />
-      <StatsCard title="jobs declined" value={declined} />
+      <StatsCard title="Applied" value={applied} />
+      <StatsCard title="Interviewed" value={interviewed} />
+      <StatsCard title="Accepted" value={accepted} />
+      <StatsCard title="Rejected" value={rejected} />
+      <StatsCard title="Offered" value={offered} />
+      <StatsCard title="Wishlist" value={wishlist} />
     </div>
   );
 }
