@@ -1,5 +1,6 @@
-import ChartsContainer from "@/components/ChartsContainer";
-import StatsContainer from "@/components/ui/StatsContainer";
+import ApplicationsChart from "@/components/ApplicationsChart";
+import StatsCards from "@/components/StatsCards";
+import StatusChart from "@/components/StatusChart";
 import { readDates, readStatus, readUserSession } from "@/utils/actions";
 import { redirect } from "next/navigation";
 
@@ -16,8 +17,9 @@ async function StatsPage() {
 
   return (
     <main>
-      <StatsContainer status={status} />
-      <ChartsContainer dates={dates} />
+      <StatsCards status={status} />
+      <StatusChart status={status} />
+      <ApplicationsChart dates={dates} />
     </main>
   );
 }

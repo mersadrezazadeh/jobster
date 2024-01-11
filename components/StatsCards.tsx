@@ -1,6 +1,6 @@
-import StatsCard from "../StatsCard";
+import StatsCard from "./StatsCard";
 
-function StatsContainer({
+function StatsCards({
   status,
 }: {
   status: {
@@ -34,4 +34,4 @@ function StatsContainer({
   );
 }
 
-export default StatsContainer;
+export default StatsCards;

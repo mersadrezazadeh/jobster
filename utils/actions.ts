@@ -130,8 +130,8 @@ export async function readDates() {
 
   const result = await supabase
     .from("jobs")
-    .select("created_at")
-    .gte("created_at", sixMonthsAgo);
+    .select("date")
+    .gte("date", sixMonthsAgo);
 
   return result;
 }
