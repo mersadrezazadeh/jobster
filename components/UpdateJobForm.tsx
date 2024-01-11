@@ -6,6 +6,8 @@ import {
   JobMode,
   CreateAndUpdateJobSchema,
   CreateAndUpdateJobType,
+  JobRemote,
+  JobSalary,
 } from "@/utils/types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -19,9 +21,22 @@ import CustomFormSelect from "./CustomFormSelect";
 import { Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { redirect } from "next/navigation";
+import CustomDatePicker from "./CustomDatePicker";
+import { Pencil } from "lucide-react";
+import GoBack from "./GoBack";
 
 function UpdateJobForm({ job }: { job: JobType }) {
-  const { id, position, company, location, status, mode } = job;
+  const {
+    id,
+    position,
+    company,
+    location,
+    status,
+    mode,
+    remote,
+    salary,
+    date,
+  } = job;
   const [isPending, startTransition] = useTransition();
 
   const form = useForm<CreateAndUpdateJobType>({
@@ -30,8 +45,11 @@ function UpdateJobForm({ job }: { job: JobType }) {
       position: position || "",
       company: company || "",
       location: location || "",
-      status: (status as JobStatus) || JobStatus.Pending,
+      status: (status as JobStatus) || JobStatus.Applied,
       mode: (mode as JobMode) || JobMode.FullTime,
+      remote: (remote as JobRemote) || JobRemote.No,
+      salary: (salary as JobSalary) || JobSalary.Entry,
+      date: date || new Date(),
     },
   });
 
@@ -53,7 +71,10 @@ function UpdateJobForm({ job }: { job: JobType }) {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)}>
-        <h2 className="mb-6 text-4xl font-semibold capitalize">edit job</h2>
+        <div className="flex justify-between">
+          <h2 className="mb-6 text-4xl font-semibold capitalize">Edit job</h2>
+          <GoBack path="jobs" />
+        </div>
 
         <div className="grid items-start gap-4 md:grid-cols-2 lg:grid-cols-3">
           <CustomFormField name="position" control={form.control} />
@@ -65,15 +86,35 @@ function UpdateJobForm({ job }: { job: JobType }) {
           <CustomFormSelect
             name="status"
             control={form.control}
-            labelText="job status"
+            labelText="status"
             items={Object.values(JobStatus)}
           />
 
           <CustomFormSelect
             name="mode"
             control={form.control}
-            labelText="job mode"
+            labelText="mode"
             items={Object.values(JobMode)}
+          />
+
+          <CustomFormSelect
+            name="remote"
+            control={form.control}
+            labelText="remote"
+            items={Object.values(JobRemote)}
+          />
+
+          <CustomFormSelect
+            name="salary"
+            control={form.control}
+            labelText="salary"
+            items={Object.values(JobSalary)}
+          />
+
+          <CustomDatePicker
+            name="date"
+            control={form.control}
+            labelText="date"
           />
 
           <Button
@@ -81,8 +122,11 @@ function UpdateJobForm({ job }: { job: JobType }) {
             disabled={isPending}
             className="flex gap-2 self-end capitalize"
           >
-            Edit job
-            <Loader2 className={cn("animate-spin", { hidden: !isPending })} />
+            {!isPending ? (
+              <Pencil />
+            ) : (
+              <Loader2 className={cn("animate-spin")} />
+            )}
           </Button>
         </div>
       </form>
