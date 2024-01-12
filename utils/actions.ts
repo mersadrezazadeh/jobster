@@ -135,12 +135,12 @@ export async function readDates() {
 
   return result;
 }
-export async function readApplied() {
+export async function readApplies() {
   const supabase = await createSupabaseServerClient();
 
   const result = await supabase
     .from("jobs")
-    .select("company, position")
+    .select("id, company, position")
     .eq("status", "Applied");
 
   return result;

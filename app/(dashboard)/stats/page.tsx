@@ -1,7 +1,13 @@
 import ApplicationsChart from "@/components/ApplicationsChart";
+import RecentApplies from "@/components/RecentApplies";
 import StatsCards from "@/components/StatsCards";
 import StatusChart from "@/components/StatusChart";
-import { readDates, readStatus, readUserSession } from "@/utils/actions";
+import {
+  readApplies,
+  readDates,
+  readStatus,
+  readUserSession,
+} from "@/utils/actions";
 import { redirect } from "next/navigation";
 
 async function StatsPage() {
@@ -11,14 +17,22 @@ async function StatsPage() {
 
   const { data: status, error: statusError } = await readStatus();
   const { data: dates, error: datesError } = await readDates();
+  const { data: applies, error: appliesError } = await readApplies();
 
-  if (statusError || datesError)
-    return <div>{statusError?.message || datesError?.message}</div>;
+  if (statusError || datesError || appliesError)
+    return (
+      <div>
+        {statusError?.message || datesError?.message || appliesError?.message}
+      </div>
+    );
 
   return (
     <main>
       <StatsCards status={status} />
-      <StatusChart status={status} />
+      <div className="mt-16 grid grid-cols-1 gap-4 md:grid-cols-2">
+        <StatusChart status={status} />
+        <RecentApplies applies={applies} />
+      </div>
       <ApplicationsChart dates={dates} />
     </main>
   );

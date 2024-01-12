@@ -8,7 +8,7 @@ import {
   ResponsiveContainer,
   Tooltip,
 } from "recharts";
-import { Card, CardDescription, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardTitle } from "@/components/ui/card";
 
 type Status = {
   status:
@@ -105,14 +105,14 @@ function StatusChart({ status }: StatusChartProps) {
   console.log(data);
 
   return (
-    <section className="mt-16">
-      <Card className="bg-muted py-6">
+    <section>
+      <Card className="size-full bg-muted pt-6">
         <CardTitle className="text-center text-4xl font-semibold">
           Overall Status
         </CardTitle>
-        <CardDescription>
-          <ResponsiveContainer width="100%" height={250}>
-            <PieChart margin={{ top: 20, left: -20, right: 20 }}>
+        <CardContent className="p-0">
+          <ResponsiveContainer width="100%" height={300}>
+            <PieChart>
               <Pie
                 data={data}
                 nameKey="status"
@@ -133,7 +133,7 @@ function StatusChart({ status }: StatusChartProps) {
               <Legend
                 verticalAlign="middle"
                 align="right"
-                width={100}
+                width={110}
                 layout="vertical"
                 iconSize={10}
                 iconType="circle"
@@ -142,12 +142,13 @@ function StatusChart({ status }: StatusChartProps) {
               <Tooltip
                 contentStyle={{
                   fontSize: "14px",
-                  borderRadius: "6px",
+                  borderRadius: "1000px",
+                  fontWeight: 500,
                 }}
               />
             </PieChart>
           </ResponsiveContainer>
-        </CardDescription>
+        </CardContent>
       </Card>
     </section>
   );
