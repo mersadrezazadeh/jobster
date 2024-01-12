@@ -13,7 +13,7 @@ import { Card, CardDescription, CardTitle } from "@/components/ui/card";
 
 import dayjs from "dayjs";
 
-function ApplicationsChart({ dates }: { dates: { date: string }[] }) {
+function MonthlyApplications({ dates }: { dates: { date: string }[] }) {
   const data = dates.reduce(
     (acc, date) => {
       const formattedDate = dayjs(date.date).format("MMM YY");
@@ -50,4 +50,4 @@ function ApplicationsChart({ dates }: { dates: { date: string }[] }) {
   );
 }
 
-export default ApplicationsChart;
+export default MonthlyApplications;

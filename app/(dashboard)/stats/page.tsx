@@ -1,13 +1,13 @@
-import ApplicationsChart from "@/components/ApplicationsChart";
-import RecentApplies from "@/components/RecentApplies";
-import StatsCards from "@/components/StatsCards";
-import OverallStatus from "@/components/OverallStatus";
 import {
   readApplies,
   readDates,
   readStatus,
   readUserSession,
 } from "@/utils/actions";
+import MonthlyApplications from "@/components/MonthlyApplications";
+import RecentApplies from "@/components/RecentApplies";
+import StatsCards from "@/components/StatsCards";
+import OverallStatus from "@/components/OverallStatus";
 import { redirect } from "next/navigation";
 
 async function StatsPage() {
@@ -33,7 +33,7 @@ async function StatsPage() {
         <OverallStatus status={status} />
         <RecentApplies applies={applies} />
       </div>
-      <ApplicationsChart dates={dates} />
+      <MonthlyApplications dates={dates} />
     </main>
   );
 }
