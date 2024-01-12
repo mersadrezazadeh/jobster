@@ -108,7 +108,7 @@ function StatusChart({ status }: StatusChartProps) {
     <section className="mt-16">
       <Card className="bg-muted py-6">
         <CardTitle className="text-center text-4xl font-semibold">
-          Overall Applications
+          Overall Status
         </CardTitle>
         <CardDescription>
           <ResponsiveContainer width="100%" height={250}>
