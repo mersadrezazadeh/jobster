@@ -1,7 +1,7 @@
 import ApplicationsChart from "@/components/ApplicationsChart";
 import RecentApplies from "@/components/RecentApplies";
 import StatsCards from "@/components/StatsCards";
-import StatusChart from "@/components/StatusChart";
+import OverallStatus from "@/components/OverallStatus";
 import {
   readApplies,
   readDates,
@@ -30,7 +30,7 @@ async function StatsPage() {
     <main>
       <StatsCards status={status} />
       <div className="mt-16 grid grid-cols-1 gap-4 md:grid-cols-2">
-        <StatusChart status={status} />
+        <OverallStatus status={status} />
         <RecentApplies applies={applies} />
       </div>
       <ApplicationsChart dates={dates} />

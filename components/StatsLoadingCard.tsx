@@ -8,7 +8,7 @@ import { Skeleton } from "./ui/skeleton";
 
 function StatsLoadingCard() {
   return (
-    <Card className="h-[88px] w-[330px]">
+    <Card className="h-[88px] w-full">
       <CardHeader className="flex flex-row items-center justify-between">
         <div className="flex items-center space-x-4">
           <Skeleton className="h-12 w-12 rounded-full" />
