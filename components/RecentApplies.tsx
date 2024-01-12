@@ -1,14 +1,10 @@
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardTitle } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
+import { Badge } from "./ui/badge";
 
 type RecentAppliesProps = {
-  applies: { id: string; company: string; position: string }[];
+  applies: { id: string; company: string; position: string; mode: string }[];
 };
 
 function RecentApplies({ applies }: RecentAppliesProps) {
@@ -20,15 +16,26 @@ function RecentApplies({ applies }: RecentAppliesProps) {
         </CardTitle>
         <CardContent>
           <ScrollArea className="mt-10 h-72 rounded-md bg-card">
-            <div className="p-4">
+            <div className="p-2 py-4">
               {applies.map((apply) => (
                 <>
                   <p
                     key={apply.id}
-                    className="grid grid-cols-[1fr,0.3fr] justify-between gap-2"
+                    className="grid grid-cols-[62px,1fr,0.2fr] justify-between"
                   >
-                    <span className="text-md">{apply.position}</span>
-                    <span className="text-sm text-muted-foreground">
+                    <Badge
+                      variant={
+                        (apply.mode === "Full-Time" && "default") ||
+                        (apply.mode === "Part-Time" && "violet") ||
+                        (apply.mode === "Internship" && "green") ||
+                        null
+                      }
+                      className="mr-1 justify-center whitespace-nowrap px-1 text-[11px]"
+                    >
+                      {apply.mode}
+                    </Badge>
+                    <span className="text-sm">{apply.position}</span>
+                    <span className="text-xs font-medium text-muted-foreground">
                       {apply.company}
                     </span>
                   </p>

@@ -140,7 +140,7 @@ export async function readApplies() {
 
   const result = await supabase
     .from("jobs")
-    .select("id, company, position")
+    .select("id, company, position, mode")
     .eq("status", "Applied");
 
   return result;
