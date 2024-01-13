@@ -79,7 +79,10 @@
   /* Scrollbar */
   * {
     scrollbar-width: thin;
-    scrollbar-color: #7c3aed;
+    scrollbar-color: "#64748b";
+  }
+  html .dark * {
+    scrollbar-color: "#93a2b7";
   }
   *::-webkit-scrollbar {
     @apply w-2;
