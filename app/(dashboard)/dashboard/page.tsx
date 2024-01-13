@@ -10,7 +10,7 @@ import StatsCards from "@/components/StatsCards";
 import OverallStatus from "@/components/OverallStatus";
 import { redirect } from "next/navigation";
 
-async function StatsPage() {
+async function DashboardPage() {
   const { data } = await readUserSession();
 
   if (!data.session) return redirect("/auth");
@@ -38,4 +38,4 @@ async function StatsPage() {
   );
 }
 
-export default StatsPage;
+export default DashboardPage;

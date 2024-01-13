@@ -7,7 +7,7 @@ import Logo from "@/assets/logo.svg";
 async function AuthPage() {
   const { data } = await readUserSession();
 
-  if (data.session) return redirect("/add-job");
+  if (data.session) return redirect("/dashboard");
 
   return (
     <main className="flex h-screen flex-col items-center justify-center gap-8">
