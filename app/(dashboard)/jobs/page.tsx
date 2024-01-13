@@ -34,12 +34,7 @@ async function JobsPage({ searchParams }: JobsPageProps) {
         <JobsFilters />
         <SearchForm />
       </div>
-      <JobsList
-        jobs={jobs}
-        count={count || 0}
-        page={page}
-        totalPages={totalPages}
-      />
+      <JobsList jobs={jobs} page={page} totalPages={totalPages} />
     </>
   );
 }

@@ -110,7 +110,7 @@ function PaginationControl({
   }
 
   return (
-    <div className="flex  gap-x-2">
+    <div className="mt-4 flex justify-center gap-x-2">
       <Button
         className="flex items-center gap-x-2 "
         variant="outline"

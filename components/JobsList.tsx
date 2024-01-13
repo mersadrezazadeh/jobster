@@ -4,12 +4,10 @@ import PaginationControl from "./PaginationControl";
 
 function JobsList({
   jobs,
-  count,
   page,
   totalPages,
 }: {
   jobs: JobType[] | null | undefined;
-  count: number;
   page: number;
   totalPages: number;
 }) {
@@ -22,14 +20,9 @@ function JobsList({
         {jobs?.map((job) => <JobCard key={job.id} job={job} />)}
       </div>
 
-      <div className="flex flex-col items-center gap-4">
-        <h2 className="text-xl font-semibold capitalize ">
-          {count} jobs found
-        </h2>
-        {totalPages > 1 && (
-          <PaginationControl currentPage={page} totalPages={totalPages} />
-        )}
-      </div>
+      {totalPages > 1 && (
+        <PaginationControl currentPage={page} totalPages={totalPages} />
+      )}
     </>
   );
 }
