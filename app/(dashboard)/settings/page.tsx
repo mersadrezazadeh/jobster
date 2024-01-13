@@ -3,7 +3,7 @@ import UpdatePasswordForm from "@/components/UpdatePasswordForm";
 import { readUser, readUserSession } from "@/utils/actions";
 import { redirect } from "next/navigation";
 
-async function UserPage() {
+async function SettingsPage() {
   const { data } = await readUserSession();
 
   if (!data.session) return redirect("/auth");
@@ -20,4 +20,4 @@ async function UserPage() {
   );
 }
 
-export default UserPage;
+export default SettingsPage;
