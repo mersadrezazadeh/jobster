@@ -16,6 +16,8 @@ export async function signUpWithEmailAndPassword({
   password: string;
   confirm: string;
 }) {
+  if (confirm !== password) return;
+
   const supabase = await createSupabaseServerClient();
 
   const result = await supabase.auth.signUp({ email, password });
@@ -61,11 +63,8 @@ export async function createJob(newJob: CreateAndUpdateJobType) {
 
 export async function readAllJobs(
   page: number = 1,
-  search?: string,
-  status?: string,
-  mode?: string,
-  remote?: string,
-  salary?: string,
+  search: string,
+  status: string,
 ) {
   const from = (page - 1) * PAGE_SIZE;
   const to = from + PAGE_SIZE - 1;
@@ -74,11 +73,20 @@ export async function readAllJobs(
 
   let query = supabase.from("jobs").select("*", { count: "exact" });
 
-  if (search)
+  if (search && status === "All") {
     query
       .or(`or(position.ilike.%${search}%,company.ilike.%${search}%)`)
       .range(from, to);
-  else query.range(from, to);
+  } else if (search && status !== "All") {
+    query
+      .eq("status", status)
+      .or(`or(position.ilike.%${search}%,company.ilike.%${search}%)`)
+      .range(from, to);
+  } else if (status !== "All") {
+    query.eq("status", status).range(from, to);
+  } else {
+    query.range(from, to);
+  }
 
   const result = await query;
 

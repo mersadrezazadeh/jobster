@@ -23,18 +23,15 @@ async function JobsPage({ searchParams }: JobsPageProps) {
   const page = Number(searchParams?.page) || 1;
   const search = searchParams?.search || "";
   const status = searchParams?.status || "All";
-  const mode = searchParams?.mode || "All";
-  const remote = searchParams?.remote || "All";
-  const salary = searchParams?.salary || "All";
 
-  const { data: jobs, count, error } = await readAllJobs(page, search);
+  const { data: jobs, count, error } = await readAllJobs(page, search, status);
 
   const totalPages = Math.ceil((count || 0) / 10);
 
   return (
     <>
       <SearchForm />
-      <JobsFilters />
+      <JobsFilters search={search} />
       <JobsList
         jobs={jobs}
         count={count || 0}

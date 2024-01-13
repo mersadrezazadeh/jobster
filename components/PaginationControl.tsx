@@ -18,7 +18,7 @@ function PaginationControl({
   function handlePageChange(page: number) {
     const defaultParams = {
       search: searchParams.get("search") || "",
-      jobStatus: searchParams.get("job_status") || "all",
+      status: searchParams.get("status") || "All",
       page: String(page),
     };
 

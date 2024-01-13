@@ -4,7 +4,6 @@ import { Input } from "./ui/input";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { Button } from "./ui/button";
 import { Search } from "lucide-react";
-import ClearFilters from "./ClearFilters";
 
 function SearchForm() {
   const searchParams = useSearchParams();
@@ -12,6 +11,7 @@ function SearchForm() {
   const router = useRouter();
 
   const search = searchParams.get("search") || "";
+  const status = searchParams.get("status") || "All";
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -24,6 +24,7 @@ function SearchForm() {
     if (!searchValue) return;
 
     params.set("search", searchValue);
+    params.set("status", status);
 
     router.push(`${pathname}?${params.toString()}`);
   }
@@ -36,11 +37,10 @@ function SearchForm() {
       <Input
         type="text"
         name="search"
-        placeholder="Search Jobs..."
+        placeholder="Search for position & company..."
         defaultValue={search}
         className="col-span-full md:col-span-1"
       />
-      <ClearFilters path="/jobs" disabled={search === ""} />
 
       <Button type="submit">
         <Search />
