@@ -9,23 +9,26 @@ import {
 } from "@/components/ui/select";
 import { Label } from "./ui/label";
 import { JobStatus } from "@/utils/types";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
-function JobsFilters({ search }: { search: string }) {
+function JobsFilters() {
+  const searchParams = useSearchParams();
   const pathname = usePathname();
   const router = useRouter();
+
+  const search = searchParams.get("search") || "";
 
   function handleFilter(value: string) {
     let params = new URLSearchParams();
 
-    params.set("search", search || "");
+    params.set("search", search);
     params.set("status", value);
 
     router.push(`${pathname}?${params.toString()}`);
   }
 
   return (
-    <div className="mb-6 w-36">
+    <div>
       <Label htmlFor="status">Filter by status</Label>
       <Select
         name="status"

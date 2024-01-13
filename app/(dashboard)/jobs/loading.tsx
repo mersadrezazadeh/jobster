@@ -5,9 +5,13 @@ import SearchForm from "@/components/SearchForm";
 function loading() {
   return (
     <>
-      <SearchForm />
-      <JobsFilters />
+      <div className="mb-4 grid grid-cols-[144px,1fr] gap-4">
+        <JobsFilters />
+        <SearchForm />
+      </div>
       <div className="grid gap-8 md:grid-cols-2">
+        <JobsListLoading />
+        <JobsListLoading />
         <JobsListLoading />
         <JobsListLoading />
       </div>

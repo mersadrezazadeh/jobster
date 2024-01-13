@@ -30,8 +30,10 @@ async function JobsPage({ searchParams }: JobsPageProps) {
 
   return (
     <>
-      <SearchForm />
-      <JobsFilters search={search} />
+      <div className="mb-4 grid grid-cols-[144px,1fr] gap-4">
+        <JobsFilters />
+        <SearchForm />
+      </div>
       <JobsList
         jobs={jobs}
         count={count || 0}

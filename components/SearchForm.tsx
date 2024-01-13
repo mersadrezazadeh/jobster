@@ -30,19 +30,16 @@ function SearchForm() {
   }
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="mb-10 grid grid-cols-[auto,1fr] gap-4 rounded-lg bg-muted p-8 shadow-lg md:grid-cols-[2fr,auto,0.5fr]"
-    >
+    <form onSubmit={handleSubmit} className="flex self-end">
       <Input
         type="text"
         name="search"
         placeholder="Search for position & company..."
         defaultValue={search}
-        className="col-span-full md:col-span-1"
+        className="rounded-r-none"
       />
 
-      <Button type="submit">
+      <Button type="submit" className="rounded-l-none">
         <Search />
       </Button>
     </form>
