@@ -30,7 +30,7 @@ async function JobsPage({ searchParams }: JobsPageProps) {
 
   return (
     <>
-      <div className="mb-4 grid grid-cols-[144px,1fr] gap-4">
+      <div className="mb-4 grid grid-cols-[125px,1fr] gap-4">
         <JobsFilters />
         <SearchForm />
       </div>

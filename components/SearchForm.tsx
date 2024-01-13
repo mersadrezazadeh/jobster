@@ -34,7 +34,7 @@ function SearchForm() {
       <Input
         type="text"
         name="search"
-        placeholder="Search for position & company..."
+        placeholder="Position & Company..."
         defaultValue={search}
         className="rounded-r-none"
       />
