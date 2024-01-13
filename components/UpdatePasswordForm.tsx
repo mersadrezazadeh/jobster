@@ -23,9 +23,9 @@ function UpdatePasswordForm() {
     },
   });
 
-  function onSubmit({ password }: UpdatePasswordType) {
+  function onSubmit(data: UpdatePasswordType) {
     startTransition(async () => {
-      const result = await updateUser(password);
+      const result = await updateUser(data);
 
       const { error } = JSON.parse(result);
 

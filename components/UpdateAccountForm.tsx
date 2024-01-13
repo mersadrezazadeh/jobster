@@ -39,9 +39,9 @@ function UpdateAccountForm({ userData }: UpdateAccountFormProps) {
     },
   });
 
-  function onSubmit({ fullName }: UpdateAccountType) {
+  function onSubmit(data: UpdateAccountType) {
     startTransition(async () => {
-      const result = await updateUser(fullName);
+      const result = await updateUser(data);
 
       const { error } = JSON.parse(result);
 

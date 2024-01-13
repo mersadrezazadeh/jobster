@@ -160,7 +160,13 @@ export async function readUser() {
   return result;
 }
 
-export async function updateUser(fullName?: string, password?: string) {
+export async function updateUser({
+  fullName,
+  password,
+}: {
+  fullName?: string;
+  password?: string;
+}) {
   let updateData = password ? { password } : { data: { fullName } };
 
   const supabase = await createSupabaseServerClient();
