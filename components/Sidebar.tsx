@@ -17,9 +17,9 @@ function Sidebar() {
         {links.map((link) => (
           <Button
             asChild
-            variant={pathname === link.href ? "default" : "secondary"}
+            variant={pathname === link.href ? "default" : "outline"}
             key={link.href}
-            className="flex justify-start gap-3 px-12"
+            className="flex justify-start gap-3 px-12 dark:border-muted-foreground"
           >
             <Link href={link.href}>
               {link.icon}
