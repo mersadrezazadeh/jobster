@@ -76,4 +76,18 @@
   body {
     @apply bg-background text-foreground;
   }
+  /* Scrollbar */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #7c3aed;
+  }
+  *::-webkit-scrollbar {
+    @apply w-2;
+  }
+  *::-webkit-scrollbar-thumb {
+    @apply rounded-3xl bg-muted-foreground hover:bg-primary;
+  }
+  *::-webkit-scrollbar-track {
+    @apply rounded-3xl bg-muted;
+  }
 }
