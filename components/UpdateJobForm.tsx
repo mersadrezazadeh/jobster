@@ -70,7 +70,10 @@ function UpdateJobForm({ job }: { job: JobType }) {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)}>
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="rounded bg-muted p-8 shadow-lg"
+      >
         <div className="flex justify-between">
           <h2 className="mb-6 text-4xl font-semibold capitalize">Edit job</h2>
           <GoBack path="jobs" />

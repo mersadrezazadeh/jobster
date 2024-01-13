@@ -6,7 +6,7 @@ function GoBack({ path }: { path: string }) {
   const router = useRouter();
 
   return (
-    <Button onClick={() => router.push(`/${path}`)}>
+    <Button type="button" onClick={() => router.push(`/${path}`)}>
       <ArrowRight />
     </Button>
   );
