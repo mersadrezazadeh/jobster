@@ -29,7 +29,9 @@ function JobsFilters() {
 
   return (
     <div>
-      <Label htmlFor="status">Filter by status</Label>
+      <Label htmlFor="status" className="font-bold">
+        Filter by status
+      </Label>
       <Select
         name="status"
         defaultValue="All"
@@ -46,30 +48,6 @@ function JobsFilters() {
           ))}
         </SelectContent>
       </Select>
-
-      {/* <JobsFilterItem
-        name="status"
-        labelText="Filter by status"
-        items={["All", ...Object.values(JobStatus)]}
-      /> */}
-
-      {/* <JobsFilterItem
-        name="mode"
-        labelText="Mode"
-        items={["All", ...Object.values(JobMode)]}
-      />
-
-      <JobsFilterItem
-        name="remote"
-        labelText="Remote"
-        items={[...Object.values(JobRemote), "All"].reverse()}
-      />
-
-      <JobsFilterItem
-        name="salary"
-        labelText="Salary"
-        items={["All", ...Object.values(JobSalary)]}
-      /> */}
     </div>
   );
 }
