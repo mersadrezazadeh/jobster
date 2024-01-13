@@ -45,15 +45,21 @@ function UpdatePasswordForm() {
           Update password
         </h2>
 
-        <CustomFormField name="password" control={form.control} />
-        <CustomFormField
-          name="confirm"
-          control={form.control}
-          labelText="Confirm password"
-        />
-        <Button type="submit" disabled={isPending}>
-          {!isPending ? <Save /> : <Loader2 className={cn("animate-spin")} />}
-        </Button>
+        <div className="flex flex-col gap-4">
+          <div className="max-w-[400px]">
+            <CustomFormField name="password" control={form.control} />
+          </div>
+          <div className="max-w-[400px]">
+            <CustomFormField
+              name="confirm"
+              control={form.control}
+              labelText="Confirm password"
+            />
+          </div>
+          <Button type="submit" disabled={isPending} className="self-end">
+            {!isPending ? <Save /> : <Loader2 className={cn("animate-spin")} />}
+          </Button>
+        </div>
       </form>
     </Form>
   );
