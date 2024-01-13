@@ -1,4 +1,4 @@
-import LinksDropdown from "./LinksDropdown";
+import MobileNavigation from "./MobileNavigation";
 import SignOut from "./SignOut";
 import ThemeToggle from "./ThemeToggle";
 
@@ -7,7 +7,7 @@ function Header() {
     <header className="relative z-[9999] border border-b bg-muted px-4 py-4 shadow-xl sm:px-16 lg:px-24">
       <div className="container flex items-center justify-between">
         <div>
-          <LinksDropdown />
+          <MobileNavigation />
         </div>
         <div className="flex items-center gap-x-4">
           <ThemeToggle />
