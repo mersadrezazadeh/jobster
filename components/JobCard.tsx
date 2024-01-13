@@ -6,10 +6,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Separator } from "./ui/separator";
-import { Button } from "./ui/button";
-import { Badge } from "./ui/badge";
-import { JobType } from "@/utils/types";
 import {
   MapPin,
   Briefcase,
@@ -24,6 +20,10 @@ import {
   Heart,
   RadioTower,
 } from "lucide-react";
+import { Separator } from "./ui/separator";
+import { Button } from "./ui/button";
+import { Badge } from "./ui/badge";
+import { JobType } from "@/utils/types";
 import Link from "next/link";
 import DeleteJobButton from "./DeleteJobButton";
 import JobInfo from "./JobInfo";
@@ -40,6 +40,7 @@ function JobCard({ job }: { job: JobType }) {
     salary,
     date,
   } = job;
+
   const formattedDate = new Intl.DateTimeFormat("en-US", {
     year: "numeric",
     month: "short",
