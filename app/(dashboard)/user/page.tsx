@@ -13,7 +13,7 @@ async function UserPage() {
   if (error) return <div>{error?.message}</div>;
 
   return (
-    <main>
+    <main className="space-y-8">
       <UpdateAccountForm userData={userData} />
       <UpdatePasswordForm />
     </main>

@@ -64,17 +64,27 @@ function UpdateAccountForm({ userData }: UpdateAccountFormProps) {
           Update account
         </h2>
 
-        <FormLabel htmlFor="email">Email</FormLabel>
-        <Input disabled name="email" value={email} />
+        <div className="flex flex-col gap-4">
+          <div className="max-w-[400px]">
+            <FormLabel htmlFor="email">Email</FormLabel>
+            <Input disabled name="email" value={email} />
+          </div>
 
-        <CustomFormField
-          name="fullName"
-          control={form.control}
-          labelText="Full name"
-        />
-        <Button type="submit" disabled={isPending}>
-          {!isPending ? <Save /> : <Loader2 className={cn("animate-spin")} />}
-        </Button>
+          <div className="max-w-[400px]">
+            <CustomFormField
+              name="fullName"
+              control={form.control}
+              labelText="Full name"
+            />
+          </div>
+          <Button
+            type="submit"
+            disabled={isPending}
+            className="self-end justify-self-end"
+          >
+            {!isPending ? <Save /> : <Loader2 className={cn("animate-spin")} />}
+          </Button>
+        </div>
       </form>
     </Form>
   );
