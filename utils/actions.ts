@@ -10,14 +10,10 @@ import { PAGE_SIZE } from "./constants";
 export async function signUpWithEmailAndPassword({
   email,
   password,
-  confirm,
 }: {
   email: string;
   password: string;
-  confirm: string;
 }) {
-  if (confirm !== password) return;
-
   const supabase = await createSupabaseServerClient();
 
   const result = await supabase.auth.signUp({ email, password });

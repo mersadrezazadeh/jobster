@@ -74,8 +74,8 @@ function UpdateJobForm({ job }: { job: JobType }) {
         onSubmit={form.handleSubmit(onSubmit)}
         className="rounded bg-muted p-8 shadow-lg"
       >
-        <div className="flex justify-between">
-          <h2 className="mb-6 text-4xl font-semibold capitalize">Edit job</h2>
+        <div className="mb-6 flex justify-between">
+          <h2 className="text-4xl font-semibold capitalize">Edit job</h2>
           <GoBack path="jobs" />
         </div>
 
