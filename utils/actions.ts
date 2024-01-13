@@ -145,3 +145,27 @@ export async function readApplies() {
 
   return result;
 }
+
+export async function readUser() {
+  const supabase = await createSupabaseServerClient();
+
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
+
+  if (!session) return null;
+
+  const result = await supabase.auth.getUser();
+
+  return result;
+}
+
+export async function updateUser(fullName?: string, password?: string) {
+  let updateData = password ? { password } : { data: { fullName } };
+
+  const supabase = await createSupabaseServerClient();
+
+  const result = supabase.auth.updateUser(updateData);
+
+  return JSON.stringify(result);
+}

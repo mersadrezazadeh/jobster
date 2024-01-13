@@ -18,7 +18,7 @@ type JobsPageProps = {
 async function JobsPage({ searchParams }: JobsPageProps) {
   const { data } = await readUserSession();
 
-  if (!data.session) return redirect("/add-job");
+  if (!data.session) return redirect("/auth");
 
   const page = Number(searchParams?.page) || 1;
   const search = searchParams?.search || "";

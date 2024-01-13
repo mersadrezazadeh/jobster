@@ -57,3 +57,22 @@ export const CreateAndUpdateJobSchema = z.object({
 });
 
 export type CreateAndUpdateJobType = z.infer<typeof CreateAndUpdateJobSchema>;
+
+export const UpdateAccountSchema = z.object({
+  fullName: z.string().min(2, {
+    message: "full name must be at least 2 characters.",
+  }),
+});
+
+export type UpdateAccountType = z.infer<typeof UpdateUserAccountSchema>;
+
+export const UpdatePasswordSchema = z.object({
+  password: z.string().min(6, {
+    message: "Password must be at least 2 characters.",
+  }),
+  confirm: z.string().min(6, {
+    message: "Password must be at least 2 characters.",
+  }),
+});
+
+export type UpdatePasswordType = z.infer<typeof UpdatePasswordSchema>;

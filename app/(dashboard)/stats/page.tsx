@@ -13,7 +13,7 @@ import { redirect } from "next/navigation";
 async function StatsPage() {
   const { data } = await readUserSession();
 
-  if (!data.session) return redirect("/add-job");
+  if (!data.session) return redirect("/auth");
 
   const { data: status, error: statusError } = await readStatus();
   const { data: dates, error: datesError } = await readDates();

@@ -1,4 +1,4 @@
-import { AreaChart, Layers, LayoutList } from "lucide-react";
+import { AreaChart, Layers, LayoutList, UserRound } from "lucide-react";
 
 type NavLink = {
   href: string;
@@ -21,6 +21,11 @@ const links: NavLink[] = [
     href: "/stats",
     label: "stats",
     icon: <AreaChart />,
+  },
+  {
+    href: "/user",
+    label: "user",
+    icon: <UserRound />,
   },
 ];
 

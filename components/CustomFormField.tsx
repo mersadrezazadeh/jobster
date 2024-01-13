@@ -11,16 +11,17 @@ import { Input } from "@/components/ui/input";
 type CustomFormFieldProps = {
   name: string;
   control: Control<any>;
+  labelText?: string;
 };
 
-function CustomFormField({ name, control }: CustomFormFieldProps) {
+function CustomFormField({ name, control, labelText }: CustomFormFieldProps) {
   return (
     <FormField
       control={control}
       name={name}
       render={({ field }) => (
         <FormItem>
-          <FormLabel className="capitalize">{name}</FormLabel>
+          <FormLabel className="capitalize">{labelText || name}</FormLabel>
           <FormControl>
             <Input {...field} />
           </FormControl>
