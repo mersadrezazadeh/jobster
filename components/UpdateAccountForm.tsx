@@ -13,18 +13,7 @@ import { toast } from "./ui/use-toast";
 import { Loader2, Save } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-type UpdateAccountFormProps = {
-  userData: {
-    user: {
-      email: string;
-      user_metadata: {
-        fullName: string;
-      };
-    };
-  };
-};
-
-function UpdateAccountForm({ userData }: UpdateAccountFormProps) {
+function UpdateAccountForm({ userData }: { userData: any }) {
   const [isPending, startTransition] = useTransition();
 
   const {
