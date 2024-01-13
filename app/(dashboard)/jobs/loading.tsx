@@ -14,6 +14,12 @@ function loading() {
         <JobsListLoading />
         <JobsListLoading />
         <JobsListLoading />
+        <JobsListLoading />
+        <JobsListLoading />
+        <JobsListLoading />
+        <JobsListLoading />
+        <JobsListLoading />
+        <JobsListLoading />
       </div>
     </>
   );
