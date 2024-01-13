@@ -72,7 +72,6 @@ function UpdateAccountForm({ userData }: UpdateAccountFormProps) {
           control={form.control}
           labelText="Full name"
         />
-
         <Button type="submit" disabled={isPending}>
           {!isPending ? <Save /> : <Loader2 className={cn("animate-spin")} />}
         </Button>

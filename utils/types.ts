@@ -64,15 +64,20 @@ export const UpdateAccountSchema = z.object({
   }),
 });
 
-export type UpdateAccountType = z.infer<typeof UpdateUserAccountSchema>;
+export type UpdateAccountType = z.infer<typeof UpdateAccountSchema>;
 
-export const UpdatePasswordSchema = z.object({
-  password: z.string().min(6, {
-    message: "Password must be at least 2 characters.",
-  }),
-  confirm: z.string().min(6, {
-    message: "Password must be at least 2 characters.",
-  }),
-});
+export const UpdatePasswordSchema = z
+  .object({
+    password: z.string().min(6, {
+      message: "Password must be at least 6 characters.",
+    }),
+    confirm: z.string().min(6, {
+      message: "Password must be at least 6 characters.",
+    }),
+  })
+  .refine((data) => data.password === data.confirm, {
+    message: "Password did not match",
+    path: ["confirm"],
+  });
 
 export type UpdatePasswordType = z.infer<typeof UpdatePasswordSchema>;
