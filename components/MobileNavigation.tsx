@@ -23,7 +23,7 @@ function MobileNavigation() {
             <Menu />
           </NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className="flex flex-col gap-4 p-4">
+            <ul className="flex flex-col gap-6 p-6">
               {links.map((link) => (
                 <li key={link.href}>
                   <NavigationMenuLink asChild>
