@@ -11,7 +11,7 @@ const roboto = Roboto({
 export const metadata: Metadata = {
   title: "Jobster",
   description: "Job application tracking system for job hunters",
-  colorScheme: "light dark",
+  colorScheme: "light",
 };
 
 export default function RootLayout({
