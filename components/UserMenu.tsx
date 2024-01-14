@@ -11,6 +11,8 @@ import { CircleUserRound } from "lucide-react";
 import SignOut from "./SignOut";
 
 function UserMenu({ userData }: { userData: any }) {
+  if (!userData) return null;
+
   const {
     email,
     user_metadata: { fullName },
