@@ -56,7 +56,7 @@ function UpdatePasswordForm() {
               labelText="Confirm password"
             />
           </div>
-          <Button type="submit" disabled={isPending} className="self-end">
+          <Button type="submit" disabled={true} className="self-end">
             {!isPending ? <Save /> : <Loader2 className={cn("animate-spin")} />}
           </Button>
         </div>
