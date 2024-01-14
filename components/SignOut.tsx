@@ -18,7 +18,7 @@ function SignOut() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <Button variant="destructive">
+      <Button size="sm" variant="destructive" className="w-full">
         {!isPending ? <LogOut /> : <Loader2 className={cn("animate-spin")} />}
       </Button>
     </form>
