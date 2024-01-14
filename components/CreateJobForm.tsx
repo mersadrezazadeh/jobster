@@ -61,7 +61,9 @@ function CreateJobForm() {
         onSubmit={form.handleSubmit(onSubmit)}
         className="rounded bg-muted p-8 shadow-lg"
       >
-        <h2 className="mb-6 text-4xl font-semibold capitalize">Add job</h2>
+        <h2 className="mb-6 text-3xl font-semibold capitalize md:text-4xl">
+          Add job
+        </h2>
         <div className="grid items-start gap-4 md:grid-cols-2 lg:grid-cols-3">
           <CustomFormField name="position" control={form.control} />
 

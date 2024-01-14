@@ -41,7 +41,7 @@ function UpdatePasswordForm() {
         onSubmit={form.handleSubmit(onSubmit)}
         className="rounded bg-muted p-8 shadow-lg"
       >
-        <h2 className="mb-6 text-4xl font-semibold capitalize">
+        <h2 className="mb-6 text-3xl font-semibold capitalize md:text-4xl">
           Update password
         </h2>
 
