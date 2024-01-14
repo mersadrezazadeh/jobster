@@ -57,7 +57,12 @@ function PaginationControl({
     // dots
     if (currentPage > 3) {
       pageButtons.push(
-        <Button size="icon" variant="outline" key="dots-1">
+        <Button
+          className="pointer-events-none"
+          size="icon"
+          variant="ghost"
+          key="dots-1"
+        >
           ...
         </Button>,
       );
