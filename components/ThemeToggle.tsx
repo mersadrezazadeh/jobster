@@ -5,13 +5,14 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
+  DropdownMenuCheckboxItem,
 } from "@/components/ui/dropdown-menu";
 import { Moon, Sun } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useTheme } from "next-themes";
 
 function ThemeToggle() {
-  const { setTheme } = useTheme();
+  const { theme, setTheme } = useTheme();
 
   return (
     <DropdownMenu>
@@ -23,15 +24,24 @@ function ThemeToggle() {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="z-[99999]">
-        <DropdownMenuItem onClick={() => setTheme("light")}>
+        <DropdownMenuCheckboxItem
+          checked={theme === "light"}
+          onClick={() => setTheme("light")}
+        >
           Light
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("dark")}>
+        </DropdownMenuCheckboxItem>
+        <DropdownMenuCheckboxItem
+          checked={theme === "dark"}
+          onClick={() => setTheme("dark")}
+        >
           Dark
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("system")}>
+        </DropdownMenuCheckboxItem>
+        <DropdownMenuCheckboxItem
+          checked={theme === "system"}
+          onClick={() => setTheme("system")}
+        >
           System
-        </DropdownMenuItem>
+        </DropdownMenuCheckboxItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );
