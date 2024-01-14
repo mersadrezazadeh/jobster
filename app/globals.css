@@ -85,7 +85,7 @@
     scrollbar-color: "#93a2b7";
   }
   *::-webkit-scrollbar {
-    @apply w-2;
+    @apply w-1 md:w-2;
   }
   *::-webkit-scrollbar-thumb {
     @apply rounded-3xl bg-muted-foreground hover:bg-primary;
