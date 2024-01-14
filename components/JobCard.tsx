@@ -25,7 +25,7 @@ import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
 import { JobType } from "@/utils/types";
 import Link from "next/link";
-import DeleteJobButton from "./DeleteJobButton";
+import DeleteJob from "./DeleteJob";
 import JobInfo from "./JobInfo";
 
 function JobCard({ job }: { job: JobType }) {
@@ -104,7 +104,7 @@ function JobCard({ job }: { job: JobType }) {
             <Pencil />
           </Link>
         </Button>
-        <DeleteJobButton id={id} />
+        <DeleteJob id={id} />
       </CardFooter>
     </Card>
   );

@@ -4,9 +4,10 @@ import { Button } from "./ui/button";
 import { toast } from "@/components/ui/use-toast";
 import { useTransition } from "react";
 import { deleteJob } from "@/utils/actions";
-import { Trash2 } from "lucide-react";
+import { Loader2, Trash2 } from "lucide-react";
+import { cn } from "@/lib/utils";
 
-function DeleteJobButton({ id }: { id: string }) {
+function DeleteJob({ id }: { id: string }) {
   const [isPending, startTransition] = useTransition();
 
   function handleDelete() {
@@ -29,10 +30,10 @@ function DeleteJobButton({ id }: { id: string }) {
         variant="destructive"
         size="sm"
       >
-        <Trash2 />
+        {!isPending ? <Trash2 /> : <Loader2 className={cn("animate-spin")} />}
       </Button>
     </form>
   );
 }
 
-export default DeleteJobButton;
+export default DeleteJob;
