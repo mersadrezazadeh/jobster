@@ -39,7 +39,7 @@ function RecentApplies({ applies }: RecentAppliesProps) {
                       {apply.company}
                     </span>
                   </p>
-                  <Separator className="my-2" />
+                  <Separator className="my-3" />
                 </>
               ))}
             </div>

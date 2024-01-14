@@ -8,7 +8,7 @@ function DashboardLayout({ children }: { children: React.ReactNode }) {
 
       <Header />
 
-      <main className="overflow-y-scroll py-10">
+      <main className="overflow-y-scroll px-2 py-5 sm:px-4 md:px-6 md:py-10">
         <div className="container">{children}</div>
       </main>
     </div>
