@@ -11,7 +11,6 @@ const roboto = Roboto({
 export const metadata: Metadata = {
   title: "Jobster",
   description: "Job application tracking system for job hunters",
-  colorScheme: "light dark",
 };
 
 export default function RootLayout({
@@ -21,6 +20,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <meta name="color-scheme" content="light dark" />
+      </head>
       <body className={`${roboto.className} overflow-hidden`}>
         <Providers>{children}</Providers>
       </body>
