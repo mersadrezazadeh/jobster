@@ -14,9 +14,15 @@ export async function signUpWithEmailAndPassword({
   email: string;
   password: string;
 }) {
+  const fullName = email.slice(0, email.indexOf("@"));
+
   const supabase = await createSupabaseServerClient();
 
-  const result = await supabase.auth.signUp({ email, password });
+  const result = await supabase.auth.signUp({
+    email,
+    password,
+    options: { data: { fullName } },
+  });
 
   return JSON.stringify(result);
 }
