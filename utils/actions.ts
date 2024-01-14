@@ -3,7 +3,7 @@
 import createSupabaseServerClient from "./supabase/server";
 import { CreateAndUpdateJobType } from "./types";
 import { redirect } from "next/navigation";
-import { revalidatePath } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
 import dayjs from "dayjs";
 import { PAGE_SIZE } from "./constants";
 
@@ -187,6 +187,8 @@ export async function updateUser({
   const supabase = await createSupabaseServerClient();
 
   const result = supabase.auth.updateUser(updateData);
+
+  revalidatePath("/");
 
   return JSON.stringify(result);
 }

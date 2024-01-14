@@ -3,6 +3,8 @@ import MobileNavigation from "./MobileNavigation";
 import ThemeToggle from "./ThemeToggle";
 import UserMenu from "./UserMenu";
 
+export const revalidate = 0;
+
 async function Header() {
   const { data: userData, error } = (await readUser()) || {};
 
