@@ -107,7 +107,7 @@ function StatusChart({ status }: StatusChartProps) {
   return (
     <section>
       <Card className="size-full bg-muted pt-6">
-        <CardTitle className="text-center text-4xl font-semibold">
+        <CardTitle className="text-center text-3xl font-semibold md:text-4xl">
           Overall Status
         </CardTitle>
         <CardContent className="p-0">

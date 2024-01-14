@@ -11,17 +11,17 @@ function RecentApplies({ applies }: RecentAppliesProps) {
   return (
     <section>
       <Card className="bg-muted pt-6">
-        <CardTitle className="text-center text-4xl font-semibold">
+        <CardTitle className="text-center text-3xl font-semibold md:text-4xl">
           Recent Applies
         </CardTitle>
         <CardContent>
           <ScrollArea className="mt-10 h-72 rounded-md bg-card">
-            <div className="p-2 py-4">
+            <div className="px-2 py-4">
               {applies.map((apply) => (
                 <>
                   <p
                     key={apply.id}
-                    className="grid grid-cols-[62px,1fr,0.2fr] justify-between"
+                    className="grid grid-cols-[62px,1fr,0.2fr] items-center justify-between"
                   >
                     <Badge
                       variant={
@@ -34,8 +34,8 @@ function RecentApplies({ applies }: RecentAppliesProps) {
                     >
                       {apply.mode}
                     </Badge>
-                    <span className="text-sm">{apply.position}</span>
-                    <span className="text-xs font-medium text-muted-foreground">
+                    <span className="text-xs sm:text-sm">{apply.position}</span>
+                    <span className="text-[11px] font-medium text-muted-foreground sm:text-xs">
                       {apply.company}
                     </span>
                   </p>

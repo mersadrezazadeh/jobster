@@ -5,7 +5,7 @@ import StatsLoadingCard from "@/components/StatsLoadingCard";
 
 function loading() {
   return (
-    <>
+    <div className="space-y-8 md:space-y-16">
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         <StatsLoadingCard />
         <StatsLoadingCard />
@@ -14,12 +14,12 @@ function loading() {
         <StatsLoadingCard />
         <StatsLoadingCard />
       </div>
-      <div className="mt-16 grid grid-cols-1 gap-4 md:grid-cols-2">
+      <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-4">
         <OverallStatusLoading />
         <RecentAppliesLoading />
       </div>
       <MonthlyApplicationsLoading />
-    </>
+    </div>
   );
 }
 

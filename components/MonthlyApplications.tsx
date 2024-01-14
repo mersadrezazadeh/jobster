@@ -29,14 +29,14 @@ function MonthlyApplications({ dates }: { dates: { date: string }[] }) {
   );
 
   return (
-    <section className="mt-16">
+    <section>
       <Card className="bg-muted py-6">
-        <CardTitle className="text-center text-4xl font-semibold">
+        <CardTitle className="text-center text-3xl font-semibold md:text-4xl">
           Monthly Applications
         </CardTitle>
         <CardDescription>
           <ResponsiveContainer width="100%" height={300}>
-            <BarChart data={data} margin={{ top: 50, left: -25, right: 10 }}>
+            <BarChart data={data} margin={{ top: 50, left: -30, right: 10 }}>
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="date" />
               <YAxis allowDecimals={false} />

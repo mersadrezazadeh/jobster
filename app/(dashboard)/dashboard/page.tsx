@@ -27,9 +27,9 @@ async function DashboardPage() {
     );
 
   return (
-    <main>
+    <main className="space-y-8 md:space-y-16">
       <StatsCards status={status} />
-      <div className="mt-16 grid grid-cols-1 gap-4 md:grid-cols-2">
+      <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-4">
         <OverallStatus status={status} />
         <RecentApplies applies={applies} />
       </div>
