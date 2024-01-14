@@ -10,11 +10,11 @@ async function AuthPage() {
   if (data.session) return redirect("/dashboard");
 
   return (
-    <main className="flex h-screen flex-col items-center justify-center gap-8">
+    <main className="min-h-screen space-y-6 px-4 py-8">
       <header>
-        <Image src={Logo} alt="Jobster Logo" />
+        <Image src={Logo} alt="Jobster Logo" className="mx-auto" />
       </header>
-      <div className="w-96 px-4">
+      <div className="mx-auto max-w-96 rounded-lg border p-4">
         <AuthForm />
       </div>
     </main>

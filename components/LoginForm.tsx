@@ -25,7 +25,7 @@ const FormSchema = z.object({
   }),
 });
 
-export default function SignInForm() {
+function LoginForm() {
   const [isPending, startTransition] = useTransition();
 
   const form = useForm<z.infer<typeof FormSchema>>({
@@ -44,7 +44,7 @@ export default function SignInForm() {
 
       if (error?.message)
         toast({ variant: "destructive", title: error.message });
-      else toast({ title: "Signed in successfully" });
+      else toast({ title: "Logged in successfully" });
     });
   }
 
@@ -88,15 +88,12 @@ export default function SignInForm() {
             </FormItem>
           )}
         />
-        <Button
-          type="submit"
-          disabled={isPending}
-          className="flex w-full gap-2"
-        >
-          Sign In
-          <Loader2 className={cn("animate-spin", { hidden: !isPending })} />
+        <Button type="submit" disabled={isPending} className="w-full">
+          {!isPending ? "Login" : <Loader2 className={cn("animate-spin")} />}
         </Button>
       </form>
     </Form>
   );
 }
+
+export default LoginForm;

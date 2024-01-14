@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import createSupabaseBrowserClient from "@/utils/supabase/client";
 import { Github } from "lucide-react";
 
-export default function OAuthForm() {
+function OAuthForm() {
   const supabase = createSupabaseBrowserClient();
 
   function signInWithGithub() {
@@ -16,8 +16,10 @@ export default function OAuthForm() {
 
   return (
     <Button onClick={signInWithGithub} className="flex w-full gap-2">
-      Sign In With GitHub
       <Github />
+      Login With GitHub
     </Button>
   );
 }
+
+export default OAuthForm;
