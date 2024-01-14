@@ -75,7 +75,9 @@ function UpdateJobForm({ job }: { job: JobType }) {
         className="rounded bg-muted p-8 shadow-lg"
       >
         <div className="mb-6 flex justify-between">
-          <h2 className="text-4xl font-semibold capitalize">Edit job</h2>
+          <h2 className="text-3xl font-semibold capitalize md:text-4xl">
+            Edit job
+          </h2>
           <GoBack path="jobs" />
         </div>
 

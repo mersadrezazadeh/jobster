@@ -7,7 +7,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
-import { SquareUserRound } from "lucide-react";
+import { CircleUserRound } from "lucide-react";
 import SignOut from "./SignOut";
 
 function UserMenu({ userData }: { userData: any }) {
@@ -21,7 +21,7 @@ function UserMenu({ userData }: { userData: any }) {
       <NavigationMenuList>
         <NavigationMenuItem>
           <NavigationMenuTrigger>
-            <SquareUserRound />
+            <CircleUserRound />
           </NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="flex flex-col gap-3 p-3">
