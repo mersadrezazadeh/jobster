@@ -3,6 +3,7 @@ import { readAllJobs, readUserSession } from "@/utils/actions";
 import SearchForm from "@/components/SearchForm";
 import JobsFilters from "@/components/JobsFilters";
 import JobsList from "@/components/JobsList";
+import ClearJobsFilter from "@/components/ClearJobsFilter";
 
 type JobsPageProps = {
   searchParams?: {
@@ -30,9 +31,10 @@ async function JobsPage({ searchParams }: JobsPageProps) {
 
   return (
     <>
-      <div className="mb-4 grid grid-cols-[125px,1fr] gap-4">
+      <div className="mb-4 grid grid-cols-[125px,1fr,auto] gap-2 sm:gap-4">
         <JobsFilters />
         <SearchForm />
+        <ClearJobsFilter />
       </div>
       <JobsList jobs={jobs} page={page} totalPages={totalPages} />
     </>

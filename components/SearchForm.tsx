@@ -39,7 +39,7 @@ function SearchForm() {
         className="rounded-r-none"
       />
 
-      <Button type="submit" className="rounded-l-none">
+      <Button size="icon" type="submit" className="rounded-l-none">
         <Search />
       </Button>
     </form>
