@@ -23,11 +23,8 @@
     "@radix-ui/react-toast": "^1.1.5",
     "@supabase/ssr": "^0.0.10",
     "@supabase/supabase-js": "^2.39.2",
-    "@tanstack/react-query": "^5.17.1",
-    "@tanstack/react-query-devtools": "^5.17.1",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
-    "date-fns": "^3.2.0",
     "dayjs": "^1.11.10",
     "lucide-react": "^0.303.0",
     "next": "14.0.4",
@@ -42,7 +39,6 @@
     "zod": "^3.22.4"
   },
   "devDependencies": {
-    "@tanstack/eslint-plugin-query": "^5.17.1",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
