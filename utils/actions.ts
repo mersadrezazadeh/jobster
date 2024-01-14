@@ -3,7 +3,7 @@
 import createSupabaseServerClient from "./supabase/server";
 import { CreateAndUpdateJobType } from "./types";
 import { redirect } from "next/navigation";
-import { revalidatePath, revalidateTag } from "next/cache";
+import { revalidatePath } from "next/cache";
 import dayjs from "dayjs";
 import { PAGE_SIZE } from "./constants";
 
