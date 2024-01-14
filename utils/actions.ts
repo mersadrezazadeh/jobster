@@ -7,7 +7,7 @@ import { revalidatePath } from "next/cache";
 import dayjs from "dayjs";
 import { PAGE_SIZE } from "./constants";
 
-export async function signUpWithEmailAndPassword({
+export async function signUpWithEmailPassword({
   email,
   password,
 }: {
@@ -27,7 +27,7 @@ export async function signUpWithEmailAndPassword({
   return JSON.stringify(result);
 }
 
-export async function signInWithEmailAndPassword(data: {
+export async function signInWithEmailPassword(data: {
   email: string;
   password: string;
 }) {
@@ -55,10 +55,21 @@ export async function signOut() {
   redirect("/auth");
 }
 
-export async function createJob(newJob: CreateAndUpdateJobType) {
+export async function createUpdateJob(
+  newJob: CreateAndUpdateJobType,
+  id?: string,
+) {
   const supabase = await createSupabaseServerClient();
 
-  const result = await supabase.from("jobs").insert([newJob]).select().single();
+  let query = supabase.from("jobs");
+
+  if (!id) {
+    await query.insert([newJob]).select().single();
+  } else {
+    await query.update(newJob).eq("id", id).single();
+  }
+
+  const result = query;
 
   return JSON.stringify(result);
 }
@@ -78,16 +89,21 @@ export async function readAllJobs(
   if (search && status === "All") {
     query
       .or(`or(position.ilike.%${search}%,company.ilike.%${search}%)`)
+      .order("date", { ascending: false })
       .range(from, to);
   } else if (search && status !== "All") {
     query
       .eq("status", status)
       .or(`or(position.ilike.%${search}%,company.ilike.%${search}%)`)
+      .order("date", { ascending: false })
       .range(from, to);
   } else if (status !== "All") {
-    query.eq("status", status).range(from, to);
+    query
+      .eq("status", status)
+      .order("date", { ascending: false })
+      .range(from, to);
   } else {
-    query.range(from, to);
+    query.order("date", { ascending: false }).range(from, to);
   }
 
   const result = await query;
@@ -111,18 +127,6 @@ export async function readSingleJob(id: string) {
   const result = await supabase.from("jobs").select().eq("id", id).single();
 
   return result;
-}
-
-export async function updateJob(id: string, newJob: CreateAndUpdateJobType) {
-  const supabase = await createSupabaseServerClient();
-
-  const result = await supabase
-    .from("jobs")
-    .update(newJob)
-    .eq("id", id)
-    .single();
-
-  return JSON.stringify(result);
 }
 
 export async function readStatus() {

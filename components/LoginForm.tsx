@@ -1,8 +1,3 @@
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { Loader2 } from "lucide-react";
-import * as z from "zod";
-
 import {
   Form,
   FormControl,
@@ -11,34 +6,31 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { Loader2 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { toast } from "@/components/ui/use-toast";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { signInWithEmailAndPassword } from "@/utils/actions";
+import { signInWithEmailPassword } from "@/utils/actions";
 import { useTransition } from "react";
-
-const FormSchema = z.object({
-  email: z.string().email(),
-  password: z.string().min(1, {
-    message: "Password is required.",
-  }),
-});
+import { LoginSchema, LoginType } from "@/utils/types";
 
 function LoginForm() {
   const [isPending, startTransition] = useTransition();
 
-  const form = useForm<z.infer<typeof FormSchema>>({
-    resolver: zodResolver(FormSchema),
+  const form = useForm<LoginType>({
+    resolver: zodResolver(LoginSchema),
     defaultValues: {
       email: "",
       password: "",
     },
   });
 
-  function onSubmit(data: z.infer<typeof FormSchema>) {
+  function onSubmit(data: LoginType) {
     startTransition(async () => {
-      const result = await signInWithEmailAndPassword(data);
+      const result = await signInWithEmailPassword(data);
 
       const { error } = JSON.parse(result);
 

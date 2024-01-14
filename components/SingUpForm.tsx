@@ -13,30 +13,15 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
-import * as z from "zod";
 import { useTransition } from "react";
-import { signUpWithEmailAndPassword } from "@/utils/actions";
-
-const FormSchema = z
-  .object({
-    email: z.string().email(),
-    password: z.string().min(6, {
-      message: "Password is required.",
-    }),
-    confirm: z.string().min(6, {
-      message: "Password is required.",
-    }),
-  })
-  .refine((data) => data.confirm === data.password, {
-    message: "Password did not match",
-    path: ["confirm"],
-  });
+import { signUpWithEmailPassword } from "@/utils/actions";
+import { SignUpSchema, SignUpType } from "@/utils/types";
 
 function SingUpForm() {
   const [isPending, startTransition] = useTransition();
 
-  const form = useForm<z.infer<typeof FormSchema>>({
-    resolver: zodResolver(FormSchema),
+  const form = useForm<SignUpType>({
+    resolver: zodResolver(SignUpSchema),
     defaultValues: {
       email: "",
       password: "",
@@ -44,9 +29,9 @@ function SingUpForm() {
     },
   });
 
-  function onSubmit(data: z.infer<typeof FormSchema>) {
+  function onSubmit(data: SignUpType) {
     startTransition(async () => {
-      const result = await signUpWithEmailAndPassword(data);
+      const result = await signUpWithEmailPassword(data);
 
       const { error } = JSON.parse(result);
 

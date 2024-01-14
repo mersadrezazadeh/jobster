@@ -14,7 +14,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import CustomFormField from "./CustomFormField";
 import CustomFormSelect from "./CustomFormSelect";
-import { createJob } from "@/utils/actions";
+import { createUpdateJob } from "@/utils/actions";
 import { useTransition } from "react";
 import { Loader2, PlusCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -42,7 +42,7 @@ function CreateJobForm() {
 
   function onSubmit(data: CreateAndUpdateJobType) {
     startTransition(async () => {
-      const result = await createJob(data);
+      const result = await createUpdateJob(data);
 
       const { error } = JSON.parse(result);
 

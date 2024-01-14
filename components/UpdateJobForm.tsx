@@ -15,7 +15,7 @@ import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
 import { toast } from "@/components/ui/use-toast";
 import { useTransition } from "react";
-import { updateJob } from "@/utils/actions";
+import { createUpdateJob } from "@/utils/actions";
 import CustomFormField from "./CustomFormField";
 import CustomFormSelect from "./CustomFormSelect";
 import { Loader2 } from "lucide-react";
@@ -55,7 +55,7 @@ function UpdateJobForm({ job }: { job: JobType }) {
 
   function onSubmit(values: CreateAndUpdateJobType) {
     startTransition(async () => {
-      const result = await updateJob(id, values);
+      const result = await createUpdateJob(values, id);
 
       const { error } = JSON.parse(result);
 
