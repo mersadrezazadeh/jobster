@@ -145,7 +145,8 @@ export async function readDates() {
   const result = await supabase
     .from("jobs")
     .select("date")
-    .gte("date", sixMonthsAgo);
+    .gte("date", sixMonthsAgo)
+    .order("date", { ascending: false });
 
   return result;
 }
@@ -155,8 +156,8 @@ export async function readApplies() {
   const result = await supabase
     .from("jobs")
     .select("id, company, position, mode")
-    .eq("status", "Applied");
-
+    .eq("status", "Applied")
+    .order("date", { ascending: false });
   return result;
 }
 

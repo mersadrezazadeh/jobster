@@ -10,7 +10,6 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
-
 import dayjs from "dayjs";
 
 function MonthlyApplications({ dates }: { dates: { date: string }[] }) {
