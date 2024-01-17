@@ -10,7 +10,6 @@ function Providers({ children }: { children: React.ReactNode }) {
       defaultTheme="system"
       enableSystem
       disableTransitionOnChange
-      enableColorScheme
     >
       <Toaster />
       {children}

@@ -124,7 +124,7 @@ export async function deleteJob(id: string) {
 export async function readSingleJob(id: string) {
   const supabase = await createSupabaseServerClient();
 
-  const result = await supabase.from("jobs").select().eq("id", id).single();
+  const result = await supabase.from("jobs").select("*").eq("id", id).single();
 
   return result;
 }
