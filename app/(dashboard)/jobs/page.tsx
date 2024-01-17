@@ -27,6 +27,8 @@ async function JobsPage({ searchParams }: JobsPageProps) {
 
   const { data: jobs, count, error } = await readAllJobs(page, search, status);
 
+  if (error) return <div>{error.message}</div>;
+
   const totalPages = Math.ceil((count || 0) / 10);
 
   return (
