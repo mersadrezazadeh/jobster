@@ -6,9 +6,7 @@ async function JobDetailsPage({
 }: {
   searchParams: { id: string };
 }) {
-  const { data: job, error } = await readSingleJob(
-    "33f3ee5b-5be8-4048-9dbc-83b49bd1739b",
-  );
+  const { data: job, error } = await readSingleJob(searchParams.id);
 
   if (error) return <div>{error.message}</div>;
 

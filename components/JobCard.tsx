@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Card,
   CardContent,
@@ -27,8 +29,10 @@ import { JobType } from "@/utils/types";
 import Link from "next/link";
 import DeleteJob from "./DeleteJob";
 import JobInfo from "./JobInfo";
+import { useRouter } from "next/navigation";
 
 function JobCard({ job }: { job: JobType }) {
+  const router = useRouter();
   const {
     id,
     position,
@@ -99,10 +103,8 @@ function JobCard({ job }: { job: JobType }) {
         </div>
       </CardContent>
       <CardFooter className="flex gap-4">
-        <Button asChild size="sm">
-          <Link href={`/jobs/id?id=${id}`}>
-            <Pencil />
-          </Link>
+        <Button size="sm" onClick={() => router.push(`/jobs/id?id=${id}`)}>
+          <Pencil />
         </Button>
         <DeleteJob id={id} />
       </CardFooter>
